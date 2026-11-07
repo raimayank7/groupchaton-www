@@ -5,26 +5,46 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Page not found – GroupChatOn</title>
 <meta name="robots" content="noindex">
-<link rel="icon" type="image/png" sizes="32x32" href="https://assets.groupchaton.com/assets/brand/favicon-32.png">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="icon" type="image/png" href="https://assets.groupchaton.com/assets/brand/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
 <style>
-:root{--gco:#5FB34C;--gco-dark:#4a9039;--gco-light:#e8f5e3;--bg:#ffffff;--text:#1a2614;--text2:#4a5a42;--border:#d9e8d4}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111b0e;--text:#e4f0de;--text2:#9db892;--border:#2a3d24;--gco-light:#1a2b14}}
-:root[data-theme="dark"]{--bg:#111b0e;--text:#e4f0de;--text2:#9db892;--border:#2a3d24;--gco-light:#1a2b14}
+:root{--gco:#5FB34C;--gco-dk:#469036;--bg:#fafafa;--sf:#fff;--tx:#111;--tx2:#555;--bd:rgba(0,0,0,.09);--sans:'Plus Jakarta Sans',system-ui,sans-serif}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111;--sf:#181818;--tx:#f0f0f0;--tx2:#8a8a8a;--bd:rgba(255,255,255,.08)}}
+:root[data-theme="dark"]{--bg:#111;--sf:#181818;--tx:#f0f0f0;--tx2:#8a8a8a;--bd:rgba(255,255,255,.08)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px;text-align:center}
+body{font-family:var(--sans);background:var(--bg);color:var(--tx);min-height:100vh;display:flex;flex-direction:column}
+header{background:var(--sf);border-bottom:1px solid var(--bd);padding:16px 24px;display:flex;align-items:center;gap:12px}
+header a.home{font-weight:700;color:var(--tx);font-size:.9rem;text-decoration:none}
+header a.home:hover{color:var(--gco)}
+.main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px;text-align:center}
 .code{font-size:5rem;font-weight:700;color:var(--gco);line-height:1}
 h1{font-size:1.6rem;font-weight:700;margin:16px 0 10px}
-p{color:var(--text2);max-width:420px;margin-bottom:28px}
+p{color:var(--tx2);max-width:420px;margin-bottom:28px}
 a.btn{display:inline-flex;align-items:center;gap:8px;background:var(--gco);color:#fff;padding:12px 24px;border-radius:10px;font-weight:600;font-size:.95rem;text-decoration:none;transition:background .15s}
-a.btn:hover{background:var(--gco-dark)}
+a.btn:hover{background:var(--gco-dk)}
+footer{text-align:center;padding:24px;font-size:.8rem;color:var(--tx2);border-top:1px solid var(--bd)}
+footer a{color:var(--tx2);text-decoration:none}footer a:hover{color:var(--gco)}
 </style>
 </head>
 <body>
-<div class="code">404</div>
-<h1>Page not found</h1>
-<p>This page doesn't exist or may have moved. Head back to the GroupChatOn home and explore our services.</p>
-<a href="/" class="btn">Go to GroupChatOn home</a>
 <script>(function(){var s=localStorage.getItem('gco-theme');if(s)document.documentElement.setAttribute('data-theme',s)})();</script>
+<header>
+  <img src="https://assets.groupchaton.com/assets/brand/favicon.png" alt="" width="32" height="32">
+  <a href="/" class="home">GroupChatOn</a>
+</header>
+<div class="main">
+  <div class="code">404</div>
+  <h1>Page not found</h1>
+  <p>This page doesn&#8217;t exist or may have moved. Head back to the GroupChatOn home and explore our services.</p>
+  <a href="/" class="btn">Go to GroupChatOn home</a>
+</div>
+<footer>
+  <a href="/">GroupChatOn</a> &nbsp;&middot;&nbsp;
+  <a href="/p/privacy-policy.html">Privacy Policy</a> &nbsp;&middot;&nbsp;
+  <a href="/p/terms-of-use.html">Terms of Use</a> &nbsp;&middot;&nbsp;
+  <a href="/p/disclaimer.html">Disclaimer</a> &nbsp;&middot;&nbsp;
+  <a href="/p/contact-us.html">Contact</a>
+</footer>
 </body>
 </html>
