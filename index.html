@@ -1,852 +1,838 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GroupChatOn – Read Novels, 609 Free Tools, Share Groups &amp; More</title>
-<meta name="description" content="GroupChatOn is your free platform for reading Korean web novels, 609+ online tools, finding WhatsApp groups, sending files securely, and creating professional documents. Free forever, no login.">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GroupChatOn – Free Tools, Novels, WhatsApp Groups &amp; More</title>
+<meta name="description" content="GroupChatOn is a family of six free services: 609 online tools, free Korean web novels, a WhatsApp group directory, help guides, office templates, and secure peer-to-peer file transfer.">
+<meta name="robots" content="index,follow">
 <link rel="canonical" href="https://www.groupchaton.com/">
-<meta property="og:title" content="GroupChatOn – Read, Build, Connect">
-<meta property="og:description" content="Free novels, 609 online tools, WhatsApp groups, encrypted file transfer &amp; office templates. No login, free forever.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.groupchaton.com/">
-<meta property="og:image" content="https://assets.groupchaton.com/assets/brand/share-banner.jpg">
+<meta property="og:title" content="GroupChatOn – Free Tools, Novels, WhatsApp Groups &amp; More">
+<meta property="og:description" content="Six free services built for everyday use: online tools, Korean novels, WhatsApp groups, help guides, office kits, and file transfer.">
+<meta property="og:image" content="https://assets.groupchaton.com/assets/brand/share-card.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="GroupChatOn">
-<meta name="twitter:description" content="Novels · 609 tools · WhatsApp groups · file transfer · office templates — all free.">
 <link rel="icon" type="image/png" sizes="32x32" href="https://assets.groupchaton.com/assets/brand/favicon-32.png">
-<link rel="icon" type="image/png" sizes="192x192" href="https://assets.groupchaton.com/assets/brand/favicon-192.png">
-<link rel="apple-touch-icon" href="https://assets.groupchaton.com/assets/brand/apple-touch-icon.png">
+<link rel="apple-touch-icon" href="https://assets.groupchaton.com/assets/brand/app-maskable-512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
 <script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@graph":[
-    {
-      "@type":"WebSite",
-      "@id":"https://www.groupchaton.com/#site",
-      "url":"https://www.groupchaton.com/",
-      "name":"GroupChatOn",
-      "description":"Free platform for reading novels, 609 online tools, WhatsApp groups, encrypted file transfer, and office templates.",
-      "potentialAction":{"@type":"SearchAction","target":"https://infinity.groupchaton.com/search?q={search_term_string}","query-input":"required name=search_term_string"}
-    },
-    {
-      "@type":"Organization",
-      "@id":"https://www.groupchaton.com/#org",
-      "name":"GroupChatOn",
-      "url":"https://www.groupchaton.com/",
-      "logo":{"@type":"ImageObject","url":"https://assets.groupchaton.com/assets/brand/favicon-192.png"}
-    }
-  ]
-}
+{"@context":"https://schema.org","@type":"WebSite","name":"GroupChatOn","url":"https://www.groupchaton.com/","description":"A family of six free services: online tools, Korean web novels, WhatsApp group directory, help guides, office templates, and secure file transfer.","potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://infinity.groupchaton.com/search?q={search_term_string}"},"query-input":"required name=search_term_string"}}
 </script>
-
 <style>
-/* ── Design tokens ───────────────────────────── */
-:root {
-  --gco: #5FB34C;
-  --gco-dk: #3d8c32;
-  --bg: #060f07;
-  --bg2: #0c1a0e;
-  --sf: rgba(12,26,14,.55);
-  --sf2: rgba(18,36,20,.85);
-  --bd: rgba(95,179,76,.13);
-  --bd2: rgba(95,179,76,.38);
-  --tx: #dff0d8;
-  --tx2: #89a880;
-  --tx3: #3f5e38;
-  --mono: 'JetBrains Mono', monospace;
-  --sans: 'Plus Jakarta Sans', system-ui, sans-serif;
-  --rad: 16px;
-  --ease: .2s cubic-bezier(.4,0,.2,1);
-  --glow: rgba(95,179,76,.2);
+/* ═══════════════════════════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════════════════════════ */
+:root{
+  --gco:#5FB34C;
+  --gco-dk:#469036;
+  --bg:#111111;
+  --bg2:#181818;
+  --sf:#1f1f1f;
+  --sf2:#272727;
+  --bd:rgba(255,255,255,.08);
+  --bd2:rgba(255,255,255,.14);
+  --tx:#f0f0f0;
+  --tx2:#8a8a8a;
+  --tx3:#444444;
+  --sans:'Plus Jakarta Sans',system-ui,sans-serif;
+  --mono:'JetBrains Mono',monospace;
+  --r:10px;
+  --e:.18s cubic-bezier(.4,0,.2,1);
+  --w:1120px;
+  --sh:0 2px 16px rgba(0,0,0,.35);
 }
-@media(prefers-color-scheme:light){:root:not([data-theme="dark"]){
-  --bg:#f1fbee; --bg2:#e3f5dd;
-  --sf:rgba(255,255,255,.65); --sf2:rgba(255,255,255,.95);
-  --bd:rgba(95,179,76,.16); --bd2:rgba(95,179,76,.45);
-  --tx:#182512; --tx2:#3a5d33; --tx3:#8ab880;
-  --glow:rgba(95,179,76,.14);
-}}
 :root[data-theme="light"]{
-  --bg:#f1fbee; --bg2:#e3f5dd;
-  --sf:rgba(255,255,255,.65); --sf2:rgba(255,255,255,.95);
-  --bd:rgba(95,179,76,.16); --bd2:rgba(95,179,76,.45);
-  --tx:#182512; --tx2:#3a5d33; --tx3:#8ab880;
-  --glow:rgba(95,179,76,.14);
+  --bg:#fafafa;
+  --bg2:#f2f2f2;
+  --sf:#ffffff;
+  --sf2:#efefef;
+  --bd:rgba(0,0,0,.09);
+  --bd2:rgba(0,0,0,.16);
+  --tx:#111111;
+  --tx2:#555555;
+  --tx3:#bbbbbb;
+  --sh:0 2px 16px rgba(0,0,0,.08);
 }
 
-/* ── Reset ──────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════
+   BASE
+═══════════════════════════════════════════════════════════ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
   font-family:var(--sans);
   background:var(--bg);
   color:var(--tx);
-  min-height:100vh;
-  overflow-x:hidden;
+  line-height:1.6;
   -webkit-font-smoothing:antialiased;
-  opacity:0;transition:opacity .4s ease;
 }
-body.rdy{opacity:1}
 a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+ul{list-style:none}
+.wrap{max-width:var(--w);margin:0 auto;padding:0 24px}
 
-/* ── Background layers ──────────────────────── */
-.bg-layer{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-.bg-grid{
-  background-image:
-    linear-gradient(rgba(95,179,76,.045) 1px, transparent 1px),
-    linear-gradient(90deg,rgba(95,179,76,.045) 1px, transparent 1px);
-  background-size:50px 50px;
+/* ═══════════════════════════════════════════════════════════
+   HEADER
+═══════════════════════════════════════════════════════════ */
+.hdr{
+  position:sticky;top:0;z-index:200;
+  background:var(--bg);
+  border-bottom:1px solid var(--bd);
+  padding:0 24px;
+  backdrop-filter:blur(0);
 }
-.bg-glow{
-  background:
-    radial-gradient(ellipse 60% 50% at 5% 15%,rgba(95,179,76,.1) 0%,transparent 55%),
-    radial-gradient(ellipse 50% 50% at 95% 90%,rgba(37,211,102,.07) 0%,transparent 55%),
-    radial-gradient(ellipse 40% 40% at 50% 50%,rgba(13,148,136,.04) 0%,transparent 55%),
-    radial-gradient(ellipse 35% 35% at 75% 8%,rgba(160,76,179,.045) 0%,transparent 50%);
-  animation:glow-drift 16s ease-in-out infinite alternate;
+.hdr-in{
+  max-width:var(--w);margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  height:62px;gap:12px;
 }
-@keyframes glow-drift{
-  from{transform:scale(1) translate(0,0);opacity:.75}
-  to{transform:scale(1.08) translate(-1.2%,1.2%);opacity:1}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1rem;letter-spacing:-.01em}
+.logo img{height:30px;width:auto}
+.hdr-nav{display:flex;align-items:center;gap:2px}
+.hdr-nav a{
+  font-size:.83rem;font-weight:600;color:var(--tx2);
+  padding:6px 10px;border-radius:6px;
+  transition:color var(--e),background var(--e);
 }
+.hdr-nav a:hover{color:var(--tx);background:var(--sf2)}
+#tbtn{
+  width:36px;height:36px;display:flex;align-items:center;justify-content:center;
+  border-radius:8px;border:1px solid var(--bd2);
+  background:transparent;cursor:pointer;color:var(--tx2);
+  transition:color var(--e),background var(--e),border-color var(--e);
+  flex-shrink:0;
+}
+#tbtn:hover{color:var(--tx);background:var(--sf2)}
+@media(max-width:680px){.hdr-nav{display:none}}
 
-/* ── Logo — always show gco-dark.png (green bubble wordmark works on both themes) */
-.logo-lt{display:none}
-.logo-dk{display:block}
-.brand-name{display:none}
-
-/* ── Nav ────────────────────────────────────── */
-.nav{
-  position:sticky;top:0;z-index:100;
-  display:flex;align-items:center;justify-content:space-between;gap:12px;
-  padding:11px 24px;
-  background:rgba(6,15,7,.82);
-  backdrop-filter:blur(22px) saturate(1.5);
-  -webkit-backdrop-filter:blur(22px) saturate(1.5);
+/* ═══════════════════════════════════════════════════════════
+   HERO  — bold, clean, editorial
+═══════════════════════════════════════════════════════════ */
+.hero{
+  position:relative;overflow:hidden;
+  padding:88px 24px 72px;
   border-bottom:1px solid var(--bd);
 }
-@media(prefers-color-scheme:light){
-  :root:not([data-theme="dark"]) .nav{background:rgba(241,251,238,.87)}
+/* decorative blobs — no grid, nothing terminal-like */
+.hero-bg{
+  position:absolute;inset:0;pointer-events:none;
+  z-index:0;
 }
-:root[data-theme="light"] .nav{background:rgba(241,251,238,.88)}
-
-.nav-brand{
-  display:flex;align-items:center;gap:9px;
-  font-weight:800;font-size:1.07rem;letter-spacing:-.025em;
-  flex-shrink:0;
+.hero-blob{
+  position:absolute;border-radius:50%;
+  filter:blur(80px);opacity:.18;
 }
-.logo-dk{height:34px;width:auto;max-width:180px;flex-shrink:0}
-.brand-name .gn{color:var(--gco)}
-
-.nav-r{display:flex;align-items:center;gap:7px}
-.nb{
-  display:inline-flex;align-items:center;gap:5px;
-  padding:7px 14px;border-radius:9px;
-  font:inherit;font-size:.83rem;font-weight:600;cursor:pointer;
-  transition:var(--ease);letter-spacing:-.005em;
+.hero-blob-a{
+  width:560px;height:400px;
+  background:radial-gradient(circle,#5FB34C,transparent 70%);
+  top:-80px;right:-60px;
 }
-.nb-ghost{background:none;border:1px solid var(--bd);color:var(--tx2)}
-.nb-ghost:hover{border-color:var(--gco);color:var(--gco);background:var(--glow)}
-.nb-cta{background:var(--gco);color:#fff;border:none;box-shadow:0 0 14px var(--glow)}
-.nb-cta:hover{background:var(--gco-dk);box-shadow:0 0 22px var(--glow);transform:translateY(-1px)}
-.nb-icon{background:none;border:1px solid var(--bd);color:var(--tx2);padding:7px 10px}
-.nb-icon:hover{border-color:var(--bd2);color:var(--gco)}
-@media(max-width:460px){.nb-ghost{display:none}.nav{padding:10px 14px}}
-
-/* ── Hero ───────────────────────────────────── */
-.hero{
-  position:relative;z-index:1;
-  min-height:calc(100svh - 52px);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;padding:72px 20px 90px;gap:0;
+.hero-blob-b{
+  width:380px;height:280px;
+  background:radial-gradient(circle,#A04CB3,transparent 70%);
+  bottom:-40px;left:5%;
+  opacity:.1;
 }
+.hero-inner{position:relative;z-index:1;max-width:var(--w);margin:0 auto}
 .hero-pill{
-  display:inline-flex;align-items:center;gap:8px;
+  display:inline-flex;align-items:center;gap:7px;
   background:rgba(95,179,76,.1);
-  border:1px solid rgba(95,179,76,.24);
-  border-radius:999px;padding:5px 15px;
-  font-family:var(--mono);font-size:.74rem;color:var(--gco);
-  letter-spacing:.05em;margin-bottom:28px;
+  border:1px solid rgba(95,179,76,.22);
+  border-radius:999px;padding:5px 14px;
+  font-size:.78rem;font-weight:700;color:var(--gco);
+  letter-spacing:.05em;text-transform:uppercase;
+  margin-bottom:28px;
 }
-.hero-dot{
+.hero-pill span{
   width:7px;height:7px;border-radius:50%;
-  background:var(--gco);box-shadow:0 0 7px var(--gco);
-  animation:dot-pulse 2.4s ease infinite;
-  flex-shrink:0;
-}
-@keyframes dot-pulse{
-  0%,100%{opacity:1;transform:scale(1)}
-  50%{opacity:.35;transform:scale(.65)}
+  background:var(--gco);display:inline-block;
+  box-shadow:0 0 6px var(--gco);
 }
 .hero h1{
-  font-size:clamp(2.5rem,7.8vw,5.6rem);
-  font-weight:800;letter-spacing:-.045em;line-height:1.05;
-  margin-bottom:20px;
-  background:linear-gradient(130deg,var(--tx) 0%,var(--gco) 55%,#25d366 100%);
+  font-size:clamp(2.2rem,5.5vw,3.8rem);
+  font-weight:800;line-height:1.1;letter-spacing:-.025em;
+  max-width:820px;margin-bottom:22px;
+}
+.hero h1 em{
+  font-style:normal;
+  background:linear-gradient(135deg,#5FB34C 10%,#8de87a 90%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;
   background-clip:text;
 }
 .hero-sub{
-  font-size:clamp(.93rem,2.4vw,1.15rem);
-  color:var(--tx2);line-height:1.75;
-  max-width:540px;margin:0 auto 36px;
+  font-size:clamp(1rem,2.1vw,1.18rem);
+  color:var(--tx2);max-width:580px;line-height:1.7;
+  margin-bottom:36px;
 }
-.hero-cta{display:flex;gap:11px;justify-content:center;flex-wrap:wrap;margin-bottom:40px}
-.hbtn{
-  display:inline-flex;align-items:center;gap:7px;
-  padding:12px 24px;border-radius:11px;
-  font:inherit;font-size:.96rem;font-weight:700;
-  cursor:pointer;border:none;
-  transition:var(--ease);text-decoration:none;letter-spacing:-.01em;
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:56px}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  font-weight:700;font-size:.88rem;border-radius:8px;
+  padding:12px 22px;cursor:pointer;border:none;
+  font-family:var(--sans);
+  transition:transform var(--e),opacity var(--e),box-shadow var(--e);
 }
-.hbtn-pri{
+.btn:hover{transform:translateY(-2px)}
+.btn-green{
   background:var(--gco);color:#fff;
-  box-shadow:0 0 24px var(--glow),0 4px 14px rgba(0,0,0,.18);
+  box-shadow:0 4px 20px rgba(95,179,76,.35);
 }
-.hbtn-pri:hover{transform:translateY(-3px);box-shadow:0 0 36px var(--glow),0 8px 22px rgba(0,0,0,.28)}
-.hbtn-sec{
-  background:var(--sf);color:var(--tx);
-  border:1px solid var(--bd);
-  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+.btn-green:hover{box-shadow:0 6px 28px rgba(95,179,76,.5)}
+.btn-out{
+  background:transparent;color:var(--tx);
+  border:1.5px solid var(--bd2);
 }
-.hbtn-sec:hover{border-color:var(--bd2);transform:translateY(-3px)}
-.hbtn svg{width:14px;height:14px;flex-shrink:0}
+.btn-out:hover{background:var(--sf2)}
 
-/* ── Platform stats (hero) ──────────────────── */
-.hero-stats{
-  display:flex;gap:0;
-  border:1px solid var(--bd);border-radius:var(--rad);
-  background:var(--sf);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+/* stat row */
+.stat-row{
+  display:flex;flex-wrap:wrap;gap:0;
+  border:1px solid var(--bd);border-radius:var(--r);
   overflow:hidden;
-}
-.hstat{
-  padding:16px 22px;text-align:center;
-  border-right:1px solid var(--bd);
-  flex:1;min-width:80px;
-}
-.hstat:last-child{border-right:none}
-.hstat-n{
-  font-family:var(--mono);font-size:1.3rem;font-weight:500;
-  color:var(--gco);line-height:1;display:block;
-}
-.hstat-l{font-size:.7rem;color:var(--tx2);margin-top:4px;display:block;white-space:nowrap}
-@media(max-width:460px){
-  .hero-stats{flex-wrap:wrap}
-  .hstat{flex:calc(50% - 1px);border-bottom:1px solid var(--bd)}
-  .hstat:nth-child(2){border-right:none}
-  .hstat:nth-last-child(-n+2){border-bottom:none}
-}
-
-/* scroll indicator */
-.scroll-hint{
-  position:absolute;bottom:26px;left:50%;transform:translateX(-50%);
-  display:flex;flex-direction:column;align-items:center;gap:5px;
-  color:var(--tx3);font-family:var(--mono);font-size:.69rem;letter-spacing:.08em;
-  animation:sh-float 2.6s ease-in-out infinite;
-}
-@keyframes sh-float{
-  0%,100%{transform:translateX(-50%) translateY(0);opacity:.7}
-  55%{transform:translateX(-50%) translateY(8px);opacity:1}
-}
-
-/* ── Ticker ─────────────────────────────────── */
-.ticker-wrap{
-  position:relative;z-index:1;overflow:hidden;
-  background:rgba(95,179,76,.035);
-  border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);
-  padding:8px 0;
-}
-.ticker{
-  display:flex;width:max-content;
-  animation:ticker-scroll 26s linear infinite;
-}
-.ticker:hover{animation-play-state:paused}
-.ticker-item{
-  display:flex;align-items:center;gap:7px;
-  padding:0 26px;
-  font-family:var(--mono);font-size:.78rem;color:var(--tx2);
-  white-space:nowrap;
-}
-.ticker-item::after{content:'·';margin-left:20px;color:var(--tx3)}
-.tn{color:var(--gco);font-weight:600}
-@keyframes ticker-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-/* ── Services section ───────────────────────── */
-.section{
-  position:relative;z-index:1;
-  max-width:1180px;margin:0 auto;
-  padding:72px 20px;
-}
-.sec-head{text-align:center;margin-bottom:50px}
-.sec-label{
-  font-family:var(--mono);font-size:.74rem;color:var(--gco);
-  letter-spacing:.1em;text-transform:uppercase;margin-bottom:11px;
-}
-.sec-title{
-  font-size:clamp(1.8rem,4.2vw,2.9rem);
-  font-weight:800;letter-spacing:-.035em;line-height:1.12;
-}
-.sec-sub{color:var(--tx2);font-size:1rem;margin-top:11px;line-height:1.65;max-width:460px;margin-left:auto;margin-right:auto}
-
-/* grid */
-.grid6{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:16px;
-}
-@media(max-width:860px){.grid6{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:500px){.grid6{grid-template-columns:1fr;gap:12px}}
-
-/* service card */
-.sc{
-  --c:95,179,76;
-  position:relative;overflow:hidden;
   background:var(--sf);
-  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  border:1px solid rgba(var(--c),.16);
-  border-radius:var(--rad);padding:24px;
-  display:flex;flex-direction:column;gap:13px;
-  color:var(--tx);
-  opacity:0;transform:translateY(20px);
-  transition:border-color var(--ease),box-shadow var(--ease),
-             background var(--ease),transform var(--ease);
+  max-width:620px;
+}
+.stat{
+  flex:1;min-width:110px;
+  padding:18px 20px;
+  border-right:1px solid var(--bd);
+}
+.stat:last-child{border-right:none}
+.stat-n{
+  font-family:var(--mono);
+  font-size:1.5rem;font-weight:700;line-height:1;
+  color:var(--tx);margin-bottom:4px;
+}
+.stat-l{font-size:.75rem;color:var(--tx2);font-weight:500}
+@media(max-width:460px){
+  .stat-row{flex-direction:column}
+  .stat{border-right:none;border-bottom:1px solid var(--bd)}
+  .stat:last-child{border-bottom:none}
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SECTION SKELETON
+═══════════════════════════════════════════════════════════ */
+.sec{padding:72px 24px}
+.sec-hd{margin-bottom:40px}
+.sec-hd h2{
+  font-size:clamp(1.5rem,3vw,2.1rem);
+  font-weight:800;letter-spacing:-.02em;margin-bottom:8px;
+}
+.sec-hd p{color:var(--tx2);max-width:520px;line-height:1.65}
+hr.div{height:1px;border:none;background:var(--bd);margin:0}
+
+/* ═══════════════════════════════════════════════════════════
+   SERVICE CARDS  — solid, editorial, NOT glass
+═══════════════════════════════════════════════════════════ */
+.sc-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(310px,1fr));
+  gap:14px;
+}
+.sc{
+  background:var(--sf);
+  border:1px solid var(--bd);
+  border-radius:var(--r);
+  padding:0;overflow:hidden;
+  display:flex;flex-direction:column;
+  transition:box-shadow var(--e),transform var(--e),border-color var(--e);
+  opacity:0;transform:translateY(14px);
 }
 .sc.vis{opacity:1;transform:none}
-.sc.vis.animated{transition:opacity .5s ease,transform .5s ease,
-  border-color var(--ease),box-shadow var(--ease),background var(--ease)}
 .sc:hover{
-  background:var(--sf2);
-  border-color:rgba(var(--c),.42);
-  box-shadow:0 0 30px rgba(var(--c),.13),0 12px 32px rgba(0,0,0,.16);
-  transform:translateY(-5px);
+  box-shadow:var(--sh),0 0 0 1px rgba(var(--acc),.3);
+  border-color:rgba(var(--acc),.4);
+  transform:translateY(-3px);
 }
-/* top colour line */
-.sc::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(var(--c),.55),transparent);
+/* colored top bar per service */
+.sc-bar{
+  height:3px;
+  background:linear-gradient(90deg,rgb(var(--acc)),rgba(var(--acc),.4));
+  flex-shrink:0;
 }
-/* left accent bar on hover */
-.sc::after{
-  content:'';position:absolute;top:18%;left:0;width:3px;height:64%;
-  background:linear-gradient(180deg,transparent,rgba(var(--c),.55),transparent);
-  border-radius:0 2px 2px 0;
-  opacity:0;transition:opacity var(--ease);
-}
-.sc:hover::after{opacity:1}
-/* staggered reveal delays */
-.sc:nth-child(1){transition-delay:.03s}
-.sc:nth-child(2){transition-delay:.08s}
-.sc:nth-child(3){transition-delay:.13s}
-.sc:nth-child(4){transition-delay:.18s}
-.sc:nth-child(5){transition-delay:.23s}
-.sc:nth-child(6){transition-delay:.28s}
-
-.sc-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
-.sc-icon{
-  width:44px;height:44px;border-radius:11px;flex-shrink:0;
-  background:rgba(var(--c),.11);
-  border:1px solid rgba(var(--c),.2);
+.sc-body{padding:22px 22px 20px;display:flex;flex-direction:column;gap:14px;flex:1}
+.sc-head{display:flex;align-items:center;gap:12px}
+.sc-ic{
+  width:40px;height:40px;border-radius:9px;flex-shrink:0;
+  background:rgba(var(--acc),.12);
   display:flex;align-items:center;justify-content:center;
-  font-size:1.3rem;line-height:1;
 }
-.sc-badge{
-  font-family:var(--mono);font-size:.69rem;letter-spacing:.03em;
-  background:rgba(var(--c),.1);color:rgb(var(--c));
-  border:1px solid rgba(var(--c),.2);
-  border-radius:999px;padding:3px 10px;white-space:nowrap;flex-shrink:0;
+.sc-ic svg{
+  width:20px;height:20px;
+  stroke:rgb(var(--acc));fill:none;
+  stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;
 }
-.sc-title{font-size:1.05rem;font-weight:700;letter-spacing:-.01em;line-height:1.3}
-.sc-desc{font-size:.86rem;color:var(--tx2);line-height:1.65;flex:1}
+.sc-label{}
+.sc-name{font-weight:800;font-size:1rem;line-height:1.2}
+.sc-domain{
+  font-size:.75rem;font-family:var(--mono);
+  color:rgb(var(--acc));opacity:.7;margin-top:2px;
+}
+.sc-tag{
+  margin-left:auto;flex-shrink:0;align-self:flex-start;
+  font-size:.68rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  font-family:var(--mono);
+  padding:3px 8px;border-radius:5px;
+  background:rgba(var(--acc),.12);color:rgb(var(--acc));
+}
+.sc-desc{font-size:.875rem;color:var(--tx2);line-height:1.68;flex:1}
 .sc-link{
   display:inline-flex;align-items:center;gap:6px;
-  font-size:.8rem;font-weight:600;
-  color:rgb(var(--c));
-  margin-top:auto;font-family:var(--mono);
-  transition:gap var(--ease);
+  font-size:.82rem;font-weight:700;
+  color:rgb(var(--acc));
+  transition:gap var(--e);
+  align-self:flex-start;
 }
-.sc:hover .sc-link{gap:11px}
-.sc-link svg{width:12px;height:12px;flex-shrink:0}
+.sc-link:hover{gap:10px}
+.sc-link svg{
+  width:14px;height:14px;stroke:currentColor;fill:none;
+  stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;
+}
 
-/* ── Changelog section ──────────────────────── */
-.changelog-wrap{
-  position:relative;z-index:1;
-  max-width:1180px;margin:0 auto;
-  padding:0 20px 72px;
+/* ═══════════════════════════════════════════════════════════
+   ABOUT
+═══════════════════════════════════════════════════════════ */
+.about-g{
+  display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;
 }
-.clog-hd{
-  display:flex;align-items:center;gap:14px;
-  margin-bottom:28px;
+.about-text{color:var(--tx2);line-height:1.75}
+.about-text p+p{margin-top:14px}
+.about-text a{color:var(--gco)}
+.about-facts{
+  background:var(--sf);border:1px solid var(--bd);
+  border-radius:var(--r);padding:28px;
 }
-.clog-label{
-  display:flex;align-items:center;gap:9px;
-  font-family:var(--mono);font-size:.74rem;
-  color:var(--gco);letter-spacing:.08em;
-  white-space:nowrap;
+.about-facts h3{font-weight:700;font-size:.95rem;margin-bottom:18px}
+.fl{display:flex;flex-direction:column;gap:11px}
+.fi{display:flex;align-items:flex-start;gap:11px;font-size:.875rem;color:var(--tx2)}
+.fi-ic{
+  width:20px;height:20px;border-radius:5px;
+  background:rgba(95,179,76,.1);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;margin-top:1px;
 }
-.clog-label::before{content:'//';color:var(--tx3);margin-right:1px}
-.clog-line{flex:1;height:1px;background:var(--bd)}
+.fi-ic svg{
+  width:11px;height:11px;stroke:var(--gco);fill:none;
+  stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;
+}
+@media(max-width:760px){.about-g{grid-template-columns:1fr;gap:32px}}
 
-.clog-box{
-  background:var(--sf);
-  border:1px solid var(--bd);
-  border-radius:var(--rad);
-  overflow:hidden;
+/* ═══════════════════════════════════════════════════════════
+   FAQ
+═══════════════════════════════════════════════════════════ */
+.faq{display:flex;flex-direction:column;gap:7px}
+details.fq{
+  background:var(--sf);border:1px solid var(--bd);
+  border-radius:var(--r);overflow:hidden;
 }
-/* terminal top bar */
-.clog-top{
-  display:flex;align-items:center;gap:7px;
-  padding:10px 16px;
-  background:rgba(95,179,76,.04);
+details.fq summary{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:17px 20px;cursor:pointer;
+  font-weight:700;font-size:.92rem;
+  list-style:none;gap:12px;
+  transition:color var(--e);user-select:none;
+}
+details.fq summary::-webkit-details-marker{display:none}
+details.fq[open] summary{color:var(--gco)}
+.fa{
+  width:18px;height:18px;stroke:var(--tx3);fill:none;flex-shrink:0;
+  stroke-width:2;stroke-linecap:round;stroke-linejoin:round;
+  transition:transform var(--e),stroke var(--e);
+}
+details.fq[open] .fa{transform:rotate(180deg);stroke:var(--gco)}
+.fq-body{
+  padding:4px 20px 18px;
+  font-size:.875rem;color:var(--tx2);line-height:1.7;
+  border-top:1px solid var(--bd);
+}
+.fq-body a{color:var(--gco)}
+
+/* ═══════════════════════════════════════════════════════════
+   CHANGELOG
+═══════════════════════════════════════════════════════════ */
+.clog{display:flex;flex-direction:column;gap:1px}
+.ce{
+  display:flex;gap:16px;padding:15px 0;
   border-bottom:1px solid var(--bd);
 }
-.clog-dot-r{width:11px;height:11px;border-radius:50%;background:#ff5f56;flex-shrink:0}
-.clog-dot-y{width:11px;height:11px;border-radius:50%;background:#febc2e;flex-shrink:0}
-.clog-dot-g{width:11px;height:11px;border-radius:50%;background:#27c840;flex-shrink:0}
-.clog-title-bar{flex:1;text-align:center;font-family:var(--mono);font-size:.7rem;color:var(--tx3)}
+.ce:last-child{border-bottom:none}
+.ce-dot{
+  width:10px;height:10px;border-radius:50%;
+  margin-top:5px;flex-shrink:0;
+}
+.ce-meta{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin-bottom:4px}
+.ce-svc{font-family:var(--mono);font-size:.77rem;font-weight:600}
+.ce-date{font-size:.77rem;color:var(--tx3)}
+.ce-tag{
+  font-size:.68rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  font-family:var(--mono);padding:2px 7px;border-radius:5px;
+  background:var(--sf2);color:var(--tx2);
+}
+.ce-msg{font-size:.875rem;color:var(--tx2);line-height:1.55}
+.ce-msg strong{color:var(--tx);font-weight:600}
+#clog-loading{color:var(--tx3);font-size:.875rem;padding:12px 0}
 
-.clog-entry{
-  display:flex;align-items:flex-start;gap:0;
-  padding:0;
-  border-bottom:1px solid rgba(95,179,76,.06);
-  transition:background var(--ease);
-}
-.clog-entry:last-child{border-bottom:none}
-.clog-entry:hover{background:rgba(95,179,76,.035)}
-.clog-ts{
-  flex-shrink:0;width:100px;
-  padding:14px 0 14px 20px;
-  font-family:var(--mono);font-size:.7rem;color:var(--tx3);
-  line-height:1.3;
-}
-.clog-sep{
-  flex-shrink:0;width:1px;
-  margin:10px 16px;
-  background:var(--bd);
-}
-.clog-body{flex:1;padding:12px 0;min-width:0}
-.clog-svc{
-  display:flex;align-items:center;gap:8px;
-  margin-bottom:4px;
-}
-.clog-ind{
-  width:7px;height:7px;border-radius:50%;flex-shrink:0;
-  background:rgb(var(--ec,95,179,76));
-  box-shadow:0 0 5px rgba(var(--ec,95,179,76),.5);
-}
-.clog-svc-name{
-  font-family:var(--mono);font-size:.72rem;font-weight:500;
-  color:rgb(var(--ec,95,179,76));
-  letter-spacing:.02em;
-}
-.clog-svc-tag{
-  font-family:var(--mono);font-size:.65rem;
-  background:rgba(var(--ec,95,179,76),.1);
-  color:rgb(var(--ec,95,179,76));
-  border:1px solid rgba(var(--ec,95,179,76),.2);
-  border-radius:999px;padding:1px 7px;
-}
-.clog-msg{
-  font-size:.86rem;color:var(--tx2);line-height:1.55;
-  padding-right:20px;
-}
-.clog-msg strong{color:var(--tx);font-weight:600}
-@media(max-width:560px){
-  .clog-ts{display:none}
-  .clog-sep{display:none}
-  .clog-body{padding:12px 16px}
-}
-
-/* ── Feature pills ──────────────────────────── */
-.feats-row{
-  position:relative;z-index:1;
-  display:flex;flex-wrap:wrap;justify-content:center;gap:10px;
-  padding:0 20px 72px;
-}
-.fpill{
-  display:flex;align-items:center;gap:9px;
-  background:var(--sf);border:1px solid var(--bd);border-radius:999px;
-  padding:9px 20px;
-  font-size:.86rem;font-weight:600;
-  opacity:0;transform:scale(.96);
-}
-.fpill.vis{
-  opacity:1;transform:none;
-  transition:opacity .4s ease,transform .4s ease;
-}
-.fpill:nth-child(1){transition-delay:.04s}
-.fpill:nth-child(2){transition-delay:.09s}
-.fpill:nth-child(3){transition-delay:.14s}
-.fpill:nth-child(4){transition-delay:.19s}
-.fpill:nth-child(5){transition-delay:.24s}
-.fpill em{font-style:normal;font-size:1.05rem}
-
-/* ── About section ──────────────────────────── */
-.about{
-  position:relative;z-index:1;
-  background:var(--bg2);
-  border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);
-  padding:60px 20px;
-}
-.about-inner{max-width:720px;margin:0 auto}
-.about h2{
-  font-size:clamp(1.5rem,3vw,2rem);
-  font-weight:800;letter-spacing:-.03em;margin-bottom:16px;
-}
-.about p{color:var(--tx2);font-size:.95rem;line-height:1.75;margin-bottom:13px}
-.about p:last-child{margin-bottom:0}
-.about a{color:var(--gco);font-weight:600;text-decoration:none;transition:color var(--ease)}
-.about a:hover{color:var(--gco-dk)}
-
-/* ── Footer ─────────────────────────────────── */
-.footer{
-  position:relative;z-index:1;
+/* ═══════════════════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════════════════ */
+.ft{
   border-top:1px solid var(--bd);
-  padding:40px 20px 28px;
+  padding:48px 24px 32px;
+  font-size:.85rem;color:var(--tx3);
 }
-.footer-inner{
-  max-width:1180px;margin:0 auto;
-  display:grid;grid-template-columns:1fr auto;gap:40px;align-items:start;
+.ft-g{
+  max-width:var(--w);margin:0 auto;
+  display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:40px;
 }
-@media(max-width:580px){
-  .footer-inner{grid-template-columns:1fr}
-  .footer-nav{margin-top:4px}
+.ft-brand .logo{margin-bottom:12px}
+.ft-brand p{color:var(--tx2);font-size:.85rem;line-height:1.65;margin-bottom:14px}
+.ft-col h4{
+  font-size:.74rem;font-weight:800;text-transform:uppercase;
+  letter-spacing:.07em;color:var(--tx3);margin-bottom:14px;
 }
-.footer-brand{
-  display:flex;align-items:center;gap:9px;
-  margin-bottom:7px;
+.ft-col a{
+  display:block;font-size:.85rem;color:var(--tx2);
+  padding:3px 0;transition:color var(--e);
 }
-/* dark full wordmark in footer */
-.footer-brand .logo-dk{height:28px;width:auto;max-width:150px}
-/* light bubble in footer */
-.footer-brand .logo-lt{width:22px;height:22px;border-radius:4px}
-.footer-brand .brand-name{font-weight:800;font-size:1rem;letter-spacing:-.02em}
-.footer-tag{font-size:.83rem;color:var(--tx2);line-height:1.6;max-width:280px}
-.footer-copy{font-size:.75rem;color:var(--tx3);margin-top:10px;font-family:var(--mono)}
-.footer-cred{margin-top:11px;padding-top:11px;border-top:1px solid var(--bd)}
-[data-ns-credit]{font-size:.75rem;color:var(--tx3);font-family:var(--mono)}
-[data-ns-credit] a{color:var(--tx3);font-weight:500;transition:var(--ease)}
-[data-ns-credit] a:hover{color:var(--gco)}
-.footer-nav{
-  display:grid;grid-template-columns:1fr 1fr;gap:5px 22px;
+.ft-col a:hover{color:var(--tx)}
+.ft-bot{
+  max-width:var(--w);margin:24px auto 0;
+  display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;
+  padding-top:18px;border-top:1px solid var(--bd);font-size:.8rem;
 }
-.footer-nav a{
-  font-size:.83rem;color:var(--tx2);transition:color var(--ease);white-space:nowrap;
-}
-.footer-nav a:hover{color:var(--gco)}
+.ft-bot a{color:var(--tx3);transition:color var(--e)}
+.ft-bot a:hover{color:var(--tx)}
+@media(max-width:760px){.ft-g{grid-template-columns:1fr 1fr;gap:28px}}
+@media(max-width:460px){.ft-g{grid-template-columns:1fr}}
+
+/* ═══════════════════════════════════════════════════════════
+   CARD REVEAL ANIMATION
+═══════════════════════════════════════════════════════════ */
+.sc{transition:opacity .4s ease,transform .4s ease,box-shadow var(--e),border-color var(--e)}
 </style>
 </head>
-
 <body>
-<div class="bg-layer bg-grid" aria-hidden="true"></div>
-<div class="bg-layer bg-glow" aria-hidden="true"></div>
+<script>(function(){var t=localStorage.getItem('gco-theme');if(t)document.documentElement.setAttribute('data-theme',t)})();</script>
 
-<!-- ── Nav ── -->
-<header class="nav">
-  <a href="/" class="nav-brand" aria-label="GroupChatOn home">
-    <!-- dark mode: full wordmark (gco-dark.png has bubble + "GroupChatOn" text) -->
-    <img src="/gco-dark.png" class="logo-dk" alt="GroupChatOn" width="140" height="30" loading="eager">
-    <!-- light mode: bubble icon only, text added separately -->
-    <img src="/gco-light.png" class="logo-lt" alt="" width="28" height="28" loading="eager">
-    <span class="brand-name">Group<span class="gn">ChatOn</span></span>
-  </a>
-  <div class="nav-r">
-    <a href="https://infinity.groupchaton.com/" class="nb nb-ghost" aria-label="Infinity Tools">Tools</a>
-    <a href="https://share.groupchaton.com/" class="nb nb-ghost" aria-label="Share Groups">Groups</a>
-    <a href="https://novel.groupchaton.com/" class="nb nb-cta">Read Novels</a>
-    <button class="nb nb-icon" id="theme-btn" aria-label="Toggle colour theme" title="Toggle theme">🌙</button>
+<!-- HEADER -->
+<header class="hdr">
+  <div class="hdr-in">
+    <a href="/" class="logo" aria-label="GroupChatOn">
+      <img src="https://assets.groupchaton.com/assets/brand/gco-dark.png" alt="GroupChatOn" height="30" class="dk">
+      <img src="https://assets.groupchaton.com/assets/brand/gco-light.png" alt="GroupChatOn" height="30" class="lt" style="display:none">
+    </a>
+    <nav class="hdr-nav" aria-label="Services">
+      <a href="https://infinity.groupchaton.com/">Tools</a>
+      <a href="https://app.groupchaton.com/">Novels</a>
+      <a href="https://share.groupchaton.com/">Share</a>
+      <a href="https://help.groupchaton.com/">Help</a>
+      <a href="https://toolkit.groupchaton.com/">Toolkit</a>
+      <a href="https://send.groupchaton.com/">Send</a>
+    </nav>
+    <button id="tbtn" aria-label="Toggle light/dark theme">
+      <svg id="i-sun" viewBox="0 0 24 24" width="17" height="17" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg id="i-moon" viewBox="0 0 24 24" width="17" height="17" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
   </div>
 </header>
 
-<!-- ── Hero ── -->
-<section class="hero" aria-labelledby="hero-h">
-  <div class="hero-pill">
-    <span class="hero-dot"></span>
-    Free Forever — No Login Required
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-blob hero-blob-a"></div>
+    <div class="hero-blob hero-blob-b"></div>
   </div>
-  <h1 id="hero-h">Everything you need,<br>all in one place.</h1>
-  <p class="hero-sub">Read web novels, use 609 free tools, find WhatsApp groups, send files peer-to-peer, and build professional documents — all from GroupChatOn.</p>
-  <div class="hero-cta">
-    <a href="https://infinity.groupchaton.com/" class="hbtn hbtn-pri">
-      Explore 609 Free Tools
-      <svg viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M2.5 7.5h10M9 3.5l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
-    <a href="https://share.groupchaton.com/" class="hbtn hbtn-sec">Find WhatsApp Groups</a>
-  </div>
-  <!-- platform stats -->
-  <div class="hero-stats" role="list" aria-label="Platform statistics">
-    <div class="hstat" role="listitem"><span class="hstat-n">609</span><span class="hstat-l">Free Tools</span></div>
-    <div class="hstat" role="listitem"><span class="hstat-n">2,400+</span><span class="hstat-l">Groups Listed</span></div>
-    <div class="hstat" role="listitem"><span class="hstat-n">867+</span><span class="hstat-l">Help Articles</span></div>
-    <div class="hstat" role="listitem"><span class="hstat-n">24</span><span class="hstat-l">Languages</span></div>
-  </div>
-  <div class="scroll-hint" aria-hidden="true">
-    <svg width="16" height="22" viewBox="0 0 16 22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5.25" y="1.25" width="5.5" height="11.5" rx="2.75"/><line x1="8" y1="14" x2="8" y2="19"/><polyline points="5.5,17 8,19.5 10.5,17"/></svg>
-    <span>scroll</span>
-  </div>
-</section>
-
-<!-- ── Ticker ── -->
-<div class="ticker-wrap" aria-hidden="true" role="presentation">
-  <div class="ticker">
-    <div class="ticker-item"><span class="tn">609</span> Free Online Tools</div>
-    <div class="ticker-item"><span class="tn">2,400+</span> WhatsApp Groups</div>
-    <div class="ticker-item"><span class="tn">0 ₹</span> Cost — Free Forever</div>
-    <div class="ticker-item"><span class="tn">0</span> Logins Required</div>
-    <div class="ticker-item"><span class="tn">24</span> Indian Languages</div>
-    <div class="ticker-item"><span class="tn">100+</span> Office Templates</div>
-    <div class="ticker-item"><span class="tn">P2P</span> Encrypted File Transfer</div>
-    <div class="ticker-item"><span class="tn">609</span> Free Online Tools</div>
-    <div class="ticker-item"><span class="tn">2,400+</span> WhatsApp Groups</div>
-    <div class="ticker-item"><span class="tn">0 ₹</span> Cost — Free Forever</div>
-    <div class="ticker-item"><span class="tn">0</span> Logins Required</div>
-    <div class="ticker-item"><span class="tn">24</span> Indian Languages</div>
-    <div class="ticker-item"><span class="tn">100+</span> Office Templates</div>
-    <div class="ticker-item"><span class="tn">P2P</span> Encrypted File Transfer</div>
-  </div>
-</div>
-
-<!-- ── Services ── -->
-<section class="section" aria-labelledby="svc-h">
-  <div class="sec-head">
-    <div class="sec-label">// our platforms</div>
-    <h2 class="sec-title" id="svc-h">Six tools.<br>One free home.</h2>
-    <p class="sec-sub">Every GroupChatOn service runs in your browser — no account, no cost, no catch.</p>
-  </div>
-
-  <div class="grid6">
-
-    <a href="https://novel.groupchaton.com/" class="sc" style="--c:95,179,76" aria-label="GroupChatOn Novels — Reading App">
-      <div class="sc-top">
-        <div class="sc-icon">📚</div>
-        <span class="sc-badge">Reading App</span>
-      </div>
-      <div class="sc-title">GroupChatOn Novels</div>
-      <div class="sc-desc">Read Korean web novels — translated, free, offline-ready. Install as an app to pick up right where you left off.</div>
-      <div class="sc-link" aria-hidden="true">
-        novel.groupchaton.com
-        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 6h9M7 2.5l3.5 3.5L7 9.5"/></svg>
-      </div>
-    </a>
-
-    <a href="https://infinity.groupchaton.com/" class="sc" style="--c:160,76,179" aria-label="Infinity — 609 Free Online Tools">
-      <div class="sc-top">
-        <div class="sc-icon" style="font-family:var(--mono);font-size:1.5rem;font-weight:700;color:rgb(160,76,179)">∞</div>
-        <span class="sc-badge">609 Tools</span>
-      </div>
-      <div class="sc-title">Infinity Tools</div>
-      <div class="sc-desc">609 free online tools — calculators, converters, generators, PDF, text, and more. No ads on tools, works offline.</div>
-      <div class="sc-link" aria-hidden="true">
-        infinity.groupchaton.com
-        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 6h9M7 2.5l3.5 3.5L7 9.5"/></svg>
-      </div>
-    </a>
-
-    <a href="https://help.groupchaton.com/" class="sc" style="--c:13,148,136" aria-label="GroupChatOn Help — Guides and Tutorials">
-      <div class="sc-top">
-        <div class="sc-icon" style="font-family:var(--mono);font-size:1.55rem;font-weight:700;color:rgb(13,148,136)">?</div>
-        <span class="sc-badge">Guides</span>
-      </div>
-      <div class="sc-title">GroupChatOn Help</div>
-      <div class="sc-desc">How-to guides and articles for every GroupChatOn service, written in plain language and available in many languages.</div>
-      <div class="sc-link" aria-hidden="true">
-        help.groupchaton.com
-        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 6h9M7 2.5l3.5 3.5L7 9.5"/></svg>
-      </div>
-    </a>
-
-    <a href="https://share.groupchaton.com/" class="sc" style="--c:37,211,102" aria-label="Share by GroupChatOn — WhatsApp Group Directory">
-      <div class="sc-top">
-        <div class="sc-icon">👥</div>
-        <span class="sc-badge">2,400+ Groups</span>
-      </div>
-      <div class="sc-title">Share by GroupChatOn</div>
-      <div class="sc-desc">Find and share WhatsApp groups and channels. Browse by category, language, or type. Add your group free — no login.</div>
-      <div class="sc-link" aria-hidden="true">
-        share.groupchaton.com
-        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 6h9M7 2.5l3.5 3.5L7 9.5"/></svg>
-      </div>
-    </a>
-
-    <a href="https://toolkit.groupchaton.com/" class="sc" style="--c:37,99,235" aria-label="Toolkit by GroupChatOn — Office Templates">
-      <div class="sc-top">
-        <div class="sc-icon">🗂️</div>
-        <span class="sc-badge">Office Templates</span>
-      </div>
-      <div class="sc-title">Toolkit by GroupChatOn</div>
-      <div class="sc-desc">Free Excel &amp; Word templates for GST, payroll, invoices, letters, agreements, and more. Download, fill, and print.</div>
-      <div class="sc-link" aria-hidden="true">
-        toolkit.groupchaton.com
-        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 6h9M7 2.5l3.5 3.5L7 9.5"/></svg>
-      </div>
-    </a>
-
-    <a href="https://send.groupchaton.com/" class="sc" style="--c:234,88,12" aria-label="Send by GroupChatOn — Peer-to-Peer Encrypted File Transfer">
-      <div class="sc-top">
-        <div class="sc-icon">✈️</div>
-        <span class="sc-badge">New</span>
-      </div>
-      <div class="sc-title">Send by GroupChatOn</div>
-      <div class="sc-desc">Send any file directly, browser to browser — peer-to-peer, end-to-end encrypted. No upload, no servers, no account needed.</div>
-      <div class="sc-link" aria-hidden="true">
-        send.groupchaton.com
-        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 6h9M7 2.5l3.5 3.5L7 9.5"/></svg>
-      </div>
-    </a>
-
-  </div>
-</section>
-
-<!-- ── Changelog ── -->
-<div class="changelog-wrap" aria-labelledby="clog-h">
-  <div class="clog-hd">
-    <div class="clog-label" id="clog-h">what's new</div>
-    <div class="clog-line" aria-hidden="true"></div>
-    <div class="clog-label" id="clog-month" aria-hidden="true">nov 2026</div>
-  </div>
-  <div class="clog-box" role="log" aria-label="Recent updates across GroupChatOn services">
-    <div class="clog-top" aria-hidden="true">
-      <span class="clog-dot-r"></span>
-      <span class="clog-dot-y"></span>
-      <span class="clog-dot-g"></span>
-      <span class="clog-title-bar">groupchaton — platform changelog</span>
+  <div class="hero-inner">
+    <div class="hero-pill"><span></span>Free · No login · Works offline</div>
+    <h1>Everything you need,<br><em>one place to start</em></h1>
+    <p class="hero-sub">GroupChatOn is a family of six free services built for everyday use — from 609 online tools to Korean web novels, WhatsApp groups, office kits, and instant file transfer.</p>
+    <div class="cta-row">
+      <a href="https://infinity.groupchaton.com/" class="btn btn-green">
+        <svg viewBox="0 0 24 24" width="16" height="16" stroke="#fff" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12c-2-2.5-4-4-6-4a4 4 0 0 0 0 8c2 0 4-1.5 6-4z"/><path d="M12 12c2 2.5 4 4 6 4a4 4 0 0 0 0-8c-2 0-4 1.5-6 4z"/></svg>
+        Browse 609 Tools
+      </a>
+      <a href="https://share.groupchaton.com/" class="btn btn-out">Find WhatsApp Groups</a>
     </div>
-
-    <div id="clog-entries" aria-live="polite"></div>
-
-  </div>
-</div>
-
-<!-- ── Feature pills ── -->
-<div class="feats-row" aria-label="Key benefits">
-  <div class="fpill"><em>🆓</em> Free Forever</div>
-  <div class="fpill"><em>🔒</em> No Login Needed</div>
-  <div class="fpill"><em>📶</em> Works Offline</div>
-  <div class="fpill"><em>🌐</em> 24 Indian Languages</div>
-  <div class="fpill"><em>📱</em> Install as an App</div>
-</div>
-
-<!-- ── About ── -->
-<section class="about">
-  <div class="about-inner">
-    <h2>About GroupChatOn</h2>
-    <p>GroupChatOn started as a site for Korean web novel fans and has grown into a free multi-purpose platform serving readers, professionals, and everyday internet users across India and beyond. Everything here is free to use — no account, no subscription, and no hidden costs.</p>
-    <p>The platform now includes a full reading app at <a href="https://novel.groupchaton.com/">novel.groupchaton.com</a>, a 609-tool collection at <a href="https://infinity.groupchaton.com/">Infinity</a>, how-to guides at <a href="https://help.groupchaton.com/">Help</a>, a WhatsApp group directory at <a href="https://share.groupchaton.com/">Share</a>, professional templates at <a href="https://toolkit.groupchaton.com/">Toolkit</a>, and peer-to-peer file transfer at <a href="https://send.groupchaton.com/">Send</a>.</p>
-    <p>All tools and content are free forever. We keep the lights on through carefully placed sponsor cards — never paywalls or mandatory sign-ups.</p>
+    <div class="stat-row">
+      <div class="stat"><div class="stat-n">609</div><div class="stat-l">Online tools</div></div>
+      <div class="stat"><div class="stat-n">2,400+</div><div class="stat-l">WhatsApp groups</div></div>
+      <div class="stat"><div class="stat-n">867</div><div class="stat-l">Help articles</div></div>
+      <div class="stat"><div class="stat-n">24</div><div class="stat-l">Indian languages</div></div>
+    </div>
   </div>
 </section>
 
-<!-- ── Footer ── -->
-<footer class="footer">
-  <div class="footer-inner">
-    <div>
-      <div class="footer-brand">
-        <img src="/gco-dark.png" class="logo-dk" alt="GroupChatOn" width="110" height="24" loading="lazy">
-        <img src="/gco-light.png" class="logo-lt" alt="" width="22" height="22" loading="lazy">
-        <span class="brand-name">Group<span class="gn">ChatOn</span></span>
+<!-- SERVICES -->
+<section class="sec" id="services" aria-labelledby="svc-h">
+  <div class="wrap">
+    <div class="sec-hd">
+      <h2 id="svc-h">Our services</h2>
+      <p>Six independent sites, one shared purpose — useful, free, and always improving.</p>
+    </div>
+    <div class="sc-grid">
+
+      <!-- Infinity -->
+      <article class="sc" style="--acc:160,76,179">
+        <div class="sc-bar"></div>
+        <div class="sc-body">
+          <div class="sc-head">
+            <div class="sc-ic">
+              <svg viewBox="0 0 24 24"><path d="M12 12c-2-2.5-4-4-6-4a4 4 0 0 0 0 8c2 0 4-1.5 6-4z"/><path d="M12 12c2 2.5 4 4 6 4a4 4 0 0 0 0-8c-2 0-4 1.5-6 4z"/></svg>
+            </div>
+            <div class="sc-label">
+              <div class="sc-name">Infinity</div>
+              <div class="sc-domain">infinity.groupchaton.com</div>
+            </div>
+            <span class="sc-tag">Tools</span>
+          </div>
+          <p class="sc-desc">609 free online tools — calculators, converters, generators, and productivity utilities — all in one installable PWA that works fully offline. No login is ever required; every tool runs in your browser with no data sent to any server. Perfect for students, teachers, office workers, and anyone who needs quick reliable tools without signing up.</p>
+          <a href="https://infinity.groupchaton.com/" class="sc-link">
+            Open Infinity
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Novels -->
+      <article class="sc" style="--acc:95,179,76">
+        <div class="sc-bar"></div>
+        <div class="sc-body">
+          <div class="sc-head">
+            <div class="sc-ic">
+              <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <div class="sc-label">
+              <div class="sc-name">Novels</div>
+              <div class="sc-domain">app.groupchaton.com</div>
+            </div>
+            <span class="sc-tag">Reading</span>
+          </div>
+          <p class="sc-desc">Free Korean web novels — installable as an app that syncs new chapters every hour. Read offline on any device; your reading position is saved automatically, and the library updates without any action on your part. All novels are free to read, forever, with no subscriptions or sign-ups.</p>
+          <a href="https://app.groupchaton.com/" class="sc-link">
+            Read novels
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Share -->
+      <article class="sc" style="--acc:37,211,102">
+        <div class="sc-bar"></div>
+        <div class="sc-body">
+          <div class="sc-head">
+            <div class="sc-ic">
+              <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            </div>
+            <div class="sc-label">
+              <div class="sc-name">Share</div>
+              <div class="sc-domain">share.groupchaton.com</div>
+            </div>
+            <span class="sc-tag">Groups</span>
+          </div>
+          <p class="sc-desc">A directory of 2,400+ verified WhatsApp groups and channels across categories, languages, and regions — with instant search, one-tap join, and automatic spam filtering. Groups are moderated and updated in real time, so the links you find are live and working. Submit your own group in under a minute with no account needed.</p>
+          <a href="https://share.groupchaton.com/" class="sc-link">
+            Find groups
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Help -->
+      <article class="sc" style="--acc:13,148,136">
+        <div class="sc-bar"></div>
+        <div class="sc-body">
+          <div class="sc-head">
+            <div class="sc-ic">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <div class="sc-label">
+              <div class="sc-name">Help</div>
+              <div class="sc-domain">help.groupchaton.com</div>
+            </div>
+            <span class="sc-tag">Guides</span>
+          </div>
+          <p class="sc-desc">867 hand-written how-to guides covering every Infinity tool, WhatsApp features, and GroupChatOn services — in English, Hindi, Punjabi, and Bhojpuri. Each article is written clearly for non-technical readers, with exact step-by-step paths. Full-text search makes finding the right guide instant.</p>
+          <a href="https://help.groupchaton.com/" class="sc-link">
+            Read guides
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Toolkit -->
+      <article class="sc" style="--acc:37,99,235">
+        <div class="sc-bar"></div>
+        <div class="sc-body">
+          <div class="sc-head">
+            <div class="sc-ic">
+              <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+            </div>
+            <div class="sc-label">
+              <div class="sc-name">Toolkit</div>
+              <div class="sc-domain">toolkit.groupchaton.com</div>
+            </div>
+            <span class="sc-tag">Office</span>
+          </div>
+          <p class="sc-desc">87 ready-made Excel and Word templates across 17 professional kits — covering GST invoices, payroll, letters, agreements, restaurant bills, clinic records, and more. All files are pre-set for Indian business requirements, fully editable, and free to download with no subscription.</p>
+          <a href="https://toolkit.groupchaton.com/" class="sc-link">
+            Get templates
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Send -->
+      <article class="sc" style="--acc:234,88,12">
+        <div class="sc-bar"></div>
+        <div class="sc-body">
+          <div class="sc-head">
+            <div class="sc-ic">
+              <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </div>
+            <div class="sc-label">
+              <div class="sc-name">Send</div>
+              <div class="sc-domain">send.groupchaton.com</div>
+            </div>
+            <span class="sc-tag">Transfer</span>
+          </div>
+          <p class="sc-desc">Transfer any file — any size — directly from one browser to another using peer-to-peer WebRTC encryption. Nothing is uploaded to a server; your file travels in a direct encrypted channel between the two devices and disappears the moment the transfer ends. Share the link, the other person clicks Accept, and it begins in seconds.</p>
+          <a href="https://send.groupchaton.com/" class="sc-link">
+            Send a file
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ABOUT -->
+<section class="sec" id="about" aria-labelledby="about-h">
+  <div class="wrap">
+    <div class="sec-hd">
+      <h2 id="about-h">About GroupChatOn</h2>
+    </div>
+    <div class="about-g">
+      <div class="about-text">
+        <p>GroupChatOn started as a simple directory of WhatsApp groups and has grown into a family of six distinct services used by students, small-business owners, readers, and working professionals across India. Everything is built as static pages on GitHub — no servers, no databases, no recurring infrastructure costs — which is what makes it possible to keep every service genuinely free, indefinitely.</p>
+        <p>Each service is designed to work well on a low-end Android phone on a slow data connection. Tools load offline, novels sync in the background, guides are written in plain language, and office templates open in the copy of Excel or Word already on your computer. We support 24 Indian languages across the GST tools and billing software, so you can work in the language you think in.</p>
+        <p>There are no paid plans, no premium tiers, and no features locked behind a subscription. Sponsor cards on a few guide pages are the only way the sites earn anything, and they never appear inside a tool, on a print page, or while you are actively working. The goal is simply to build things that are genuinely useful — and then leave them free forever.</p>
       </div>
-      <p class="footer-tag">Free novels, tools, groups, and apps — built for everyone.</p>
-      <div class="footer-copy">© 2026 GroupChatOn. All rights reserved.</div>
-      <div class="footer-cred">
-        <span data-ns-credit>Designed &amp; Developed by: <a href="https://www.niveshsahayak.in/" target="_blank" rel="noopener">Nivesh Sahayak</a></span>
+      <div class="about-facts">
+        <h3>What makes GroupChatOn different</h3>
+        <ul class="fl">
+          <li class="fi"><span class="fi-ic"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span>No login required for any service — ever</span></li>
+          <li class="fi"><span class="fi-ic"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span>Works fully offline after the first visit</span></li>
+          <li class="fi"><span class="fi-ic"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span>Tools and guides in 24 Indian languages</span></li>
+          <li class="fi"><span class="fi-ic"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span>GST-correct tools, pre-set for Indian business</span></li>
+          <li class="fi"><span class="fi-ic"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span>No ads inside tools, documents, or print output</span></li>
+          <li class="fi"><span class="fi-ic"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span>Your data stays on your device — nothing is uploaded</span></li>
+          <li class="fi"><span class="fi-ic"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span>Installable as an app on any phone or computer</span></li>
+          <li class="fi"><span class="fi-ic"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span>Free forever — no subscription, no paid tier</span></li>
+        </ul>
       </div>
     </div>
-    <nav class="footer-nav" aria-label="Site links">
-      <a href="https://novel.groupchaton.com/">Novels</a>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- FAQ -->
+<section class="sec" id="faq" aria-labelledby="faq-h">
+  <div class="wrap">
+    <div class="sec-hd">
+      <h2 id="faq-h">Frequently asked questions</h2>
+      <p>Everything you need to know about using GroupChatOn services.</p>
+    </div>
+    <div class="faq">
+
+      <details class="fq">
+        <summary>Are all GroupChatOn services really free? <svg class="fa" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></summary>
+        <div class="fq-body">Yes — every tool, guide, template, and service is completely free to use with no hidden costs. There are no paid plans or premium features. The only ads are sponsor cards on a small number of guide pages; they never appear inside a tool, on a printed document, or while you are actively working. This will not change.</div>
+      </details>
+
+      <details class="fq">
+        <summary>Do I need to create an account? <svg class="fa" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></summary>
+        <div class="fq-body">No account is ever required for any GroupChatOn service. You open the site and start using it immediately. There is no sign-up, no email address needed, and no password to remember. Your settings and saved data are stored locally in your own browser.</div>
+      </details>
+
+      <details class="fq">
+        <summary>Do the services work without an internet connection? <svg class="fa" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></summary>
+        <div class="fq-body">Yes. Infinity (online tools), the novels reading app, and the billing tools all work offline after you visit them once. The browser caches the pages and scripts so you can open them without data. Some features — like loading a new chapter or fetching a live exchange rate — naturally need a connection, but the core tool or document always works offline.</div>
+      </details>
+
+      <details class="fq">
+        <summary>Which Indian languages are supported? <svg class="fa" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></summary>
+        <div class="fq-body">The billing and document tools support 24 languages: Hindi, Punjabi, Bengali, Marathi, Gujarati, Tamil, Telugu, Kannada, Malayalam, Odia, Urdu, Assamese, Maithili, Bhojpuri, Nepali, Konkani, Dogri, Sindhi, Kashmiri, Bodo, Santali, Manipuri, and Sanskrit, plus English. Help articles are available in Hindi, Punjabi, and Bhojpuri.</div>
+      </details>
+
+      <details class="fq">
+        <summary>Is my data stored on GroupChatOn servers? <svg class="fa" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></summary>
+        <div class="fq-body">No. GroupChatOn is built entirely as static pages — there are no servers that store your personal data. Any information you type into a tool or save in the billing app stays inside your own browser's storage on your device. For file transfers via Send, files travel peer-to-peer directly between the two browsers and are never uploaded to any server.</div>
+      </details>
+
+      <details class="fq">
+        <summary>What is the Infinity PWA? <svg class="fa" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></summary>
+        <div class="fq-body">Infinity is a Progressive Web App — a website you can install on your phone or computer like a native app. Once installed, it appears on your home screen or taskbar, loads instantly, and works offline. To install it, open <a href="https://infinity.groupchaton.com/">infinity.groupchaton.com</a> in Chrome or Edge and tap the "Install app" prompt at the bottom of the screen.</div>
+      </details>
+
+      <details class="fq">
+        <summary>How does Send transfer files securely? <svg class="fa" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></summary>
+        <div class="fq-body">Send uses WebRTC — the same technology that powers video calls in your browser. When you share the link, a direct encrypted peer-to-peer channel is set up between the two devices. Files flow through this channel in encrypted chunks without passing through any server, and the channel closes as soon as the transfer finishes.</div>
+      </details>
+
+      <details class="fq">
+        <summary>Can I use GroupChatOn tools for my business? <svg class="fa" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></summary>
+        <div class="fq-body">Yes. The Infinity tools, Toolkit templates, and Nivesh Sahayak document tools (at <a href="https://www.niveshsahayak.in/">niveshsahayak.in</a>) are all suitable for business use. The billing and GST tools produce GST-compliant tax invoices, support 24 languages, and generate GSTR-1 summaries and Tally exports. All are free for commercial use.</div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- CHANGELOG -->
+<section class="sec" id="updates" aria-labelledby="clog-h">
+  <div class="wrap">
+    <div class="sec-hd">
+      <h2 id="clog-h">What's new</h2>
+      <p>Recent launches and improvements across all GroupChatOn services.</p>
+    </div>
+    <div id="clog-list" class="clog">
+      <p id="clog-loading">Loading updates…</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="ft">
+  <div class="ft-g">
+    <div class="ft-brand">
+      <a href="/" class="logo" aria-label="GroupChatOn">
+        <img src="https://assets.groupchaton.com/assets/brand/gco-dark.png" alt="GroupChatOn" height="26" class="dk">
+        <img src="https://assets.groupchaton.com/assets/brand/gco-light.png" alt="GroupChatOn" height="26" class="lt" style="display:none">
+      </a>
+      <p>Free tools, novels, groups, guides, templates, and file transfer — all in one place.</p>
+      <p>© <span id="yr"></span> GroupChatOn. All rights reserved.</p>
+    </div>
+    <div class="ft-col">
+      <h4>Services</h4>
       <a href="https://infinity.groupchaton.com/">Infinity Tools</a>
-      <a href="https://help.groupchaton.com/">Help</a>
+      <a href="https://app.groupchaton.com/">Novels App</a>
       <a href="https://share.groupchaton.com/">Share Groups</a>
+      <a href="https://help.groupchaton.com/">Help Guides</a>
       <a href="https://toolkit.groupchaton.com/">Toolkit</a>
       <a href="https://send.groupchaton.com/">Send Files</a>
-    </nav>
+    </div>
+    <div class="ft-col">
+      <h4>Explore</h4>
+      <a href="https://infinity.groupchaton.com/search?q=calculator">Calculators</a>
+      <a href="https://infinity.groupchaton.com/search?q=converter">Converters</a>
+      <a href="https://share.groupchaton.com/explore/">Browse Groups</a>
+      <a href="https://toolkit.groupchaton.com/#kits">Office Kits</a>
+      <a href="https://help.groupchaton.com/topics/whatsapp/">WhatsApp Help</a>
+    </div>
+    <div class="ft-col">
+      <h4>Legal</h4>
+      <a href="https://www.groupchaton.com/p/privacy-policy.html">Privacy Policy</a>
+      <a href="https://www.groupchaton.com/p/terms-of-use.html">Terms of Use</a>
+      <a href="https://www.groupchaton.com/p/disclaimer.html">Disclaimer</a>
+      <a href="https://www.groupchaton.com/p/contact-us.html">Contact Us</a>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <span>Built free. Stays free.</span>
+    <span data-ns-credit></span>
   </div>
 </footer>
 
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5935207738848708" crossorigin="anonymous"></script>
+<!-- Credit -->
+<script defer src="https://assets.niveshsahayak.in/assets/credit.js"></script>
+<!-- CF Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"489c5d5c177c4e4886cd9419c1867b06"}'></script>
+
 <script>
 (function(){
+  /* year */
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  /* theme */
   var html = document.documentElement;
-  /* apply saved theme before first paint */
-  var saved = localStorage.getItem('gco-theme');
-  if(saved) html.setAttribute('data-theme', saved);
-
-  function isDark(){
-    var t = html.getAttribute('data-theme');
-    if(t) return t === 'dark';
-    return window.matchMedia('(prefers-color-scheme:dark)').matches;
+  var tbtn = document.getElementById('tbtn');
+  var sun = document.getElementById('i-sun');
+  var moon = document.getElementById('i-moon');
+  var dks = document.querySelectorAll('.dk');
+  var lts = document.querySelectorAll('.lt');
+  function applyTheme(t){
+    html.setAttribute('data-theme',t);
+    if(t==='light'){
+      sun.style.display='none'; moon.style.display='';
+      dks.forEach(function(e){e.style.display='none'});
+      lts.forEach(function(e){e.style.display=''});
+    } else {
+      sun.style.display=''; moon.style.display='none';
+      dks.forEach(function(e){e.style.display=''});
+      lts.forEach(function(e){e.style.display='none'});
+    }
   }
-
-  /* theme toggle */
-  var btn = document.getElementById('theme-btn');
-  btn.textContent = isDark() ? '☀️' : '🌙';
-  btn.addEventListener('click', function(){
-    var next = isDark() ? 'light' : 'dark';
-    html.setAttribute('data-theme', next);
-    localStorage.setItem('gco-theme', next);
-    btn.textContent = next === 'dark' ? '☀️' : '🌙';
+  applyTheme(localStorage.getItem('gco-theme')||'dark');
+  tbtn.addEventListener('click',function(){
+    var n = html.getAttribute('data-theme')==='light'?'dark':'light';
+    applyTheme(n); localStorage.setItem('gco-theme',n);
   });
 
-  /* scroll-reveal for cards, pills, and changelog entries */
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){
-        e.target.classList.add('vis', 'animated');
-        io.unobserve(e.target);
-      }
+  /* card reveal */
+  var cards = document.querySelectorAll('.sc');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target);}
+      });
+    },{threshold:0.07});
+    cards.forEach(function(c,i){
+      c.style.transitionDelay=(i*55)+'ms'; io.observe(c);
     });
-  },{threshold:0.07,rootMargin:'0px 0px -28px 0px'});
-  document.querySelectorAll('.sc, .fpill').forEach(function(el){ io.observe(el); });
-
-  /* changelog loaded via /changelog.json */
-
-  /* fade the page in */
-  document.body.classList.add('rdy');
-})();
-</script>
-
-<script defer src="https://assets.niveshsahayak.in/assets/credit.js"></script>
-<script>
-(function(){
-  var MONTHS=['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
-  function stagger(container){
-    container.querySelectorAll('.clog-entry').forEach(function(el,i){
-      el.style.opacity='0';
-      el.style.transform='translateX(-8px)';
-      el.style.transition='opacity .4s ease '+(i*.07+.1)+'s,transform .4s ease '+(i*.07+.1)+'s';
-      var io=new IntersectionObserver(function(ents){
-        ents.forEach(function(e){if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='none';io.unobserve(e.target);}});
-      },{threshold:0.08,rootMargin:'0px 0px -20px 0px'});
-      io.observe(el);
-    });
+  } else {
+    cards.forEach(function(c){c.classList.add('vis')});
   }
-  fetch('/changelog.json').then(function(r){return r.json();}).then(function(entries){
-    var html=entries.map(function(e){
-      return '<div class="clog-entry">'
-        +'<div class="clog-ts">'+e.date+'</div>'
-        +'<div class="clog-sep" aria-hidden="true"></div>'
-        +'<div class="clog-body">'
-          +'<div class="clog-svc">'
-            +'<span class="clog-ind" style="--ec:'+e.color+'"></span>'
-            +'<span class="clog-svc-name" style="--ec:'+e.color+'">'+e.service+'</span>'
-            +'<span class="clog-svc-tag" style="--ec:'+e.color+'">'+e.tag+'</span>'
-          +'</div>'
-          +'<div class="clog-msg">'+e.msg+'</div>'
-        +'</div>'
-      +'</div>';
-    }).join('');
-    var c=document.getElementById('clog-entries');
-    if(!c)return;
-    c.innerHTML=html;
-    if(entries.length){
-      var d=new Date(entries[0].date+'T00:00:00');
-      var m=document.getElementById('clog-month');
-      if(m)m.textContent=MONTHS[d.getMonth()]+' '+d.getFullYear();
-    }
-    stagger(c);
-  }).catch(function(){});
+
+  /* changelog */
+  var list = document.getElementById('clog-list');
+  var loading = document.getElementById('clog-loading');
+  function fmtDate(s){
+    try{return new Date(s+'T00:00:00').toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'});}
+    catch(e){return s;}
+  }
+  fetch('/changelog.json?_='+Date.now())
+    .then(function(r){return r.json();})
+    .then(function(data){
+      list.removeChild(loading);
+      data.forEach(function(e){
+        var row=document.createElement('div');
+        row.className='ce';
+        row.innerHTML=
+          '<div class="ce-dot" style="background:rgb('+e.color+')"></div>'+
+          '<div>'+
+            '<div class="ce-meta">'+
+              '<span class="ce-svc" style="color:rgb('+e.color+')">'+e.service+'</span>'+
+              '<span class="ce-date">'+fmtDate(e.date)+'</span>'+
+              '<span class="ce-tag">'+e.tag+'</span>'+
+            '</div>'+
+            '<div class="ce-msg">'+e.msg+'</div>'+
+          '</div>';
+        list.appendChild(row);
+      });
+    })
+    .catch(function(){loading.textContent='Updates unavailable right now.';});
 })();
 </script>
 </body>
