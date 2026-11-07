@@ -706,7 +706,7 @@ a{color:inherit;text-decoration:none}
   <div class="clog-hd">
     <div class="clog-label" id="clog-h">what's new</div>
     <div class="clog-line" aria-hidden="true"></div>
-    <div class="clog-label" aria-hidden="true">nov 2026</div>
+    <div class="clog-label" id="clog-month" aria-hidden="true">nov 2026</div>
   </div>
   <div class="clog-box" role="log" aria-label="Recent updates across GroupChatOn services">
     <div class="clog-top" aria-hidden="true">
@@ -716,83 +716,7 @@ a{color:inherit;text-decoration:none}
       <span class="clog-title-bar">groupchaton — platform changelog</span>
     </div>
 
-    <div class="clog-entry">
-      <div class="clog-ts">2026-11-03</div>
-      <div class="clog-sep" aria-hidden="true"></div>
-      <div class="clog-body">
-        <div class="clog-svc">
-          <span class="clog-ind" style="--ec:234,88,12"></span>
-          <span class="clog-svc-name" style="--ec:234,88,12">send.</span>
-          <span class="clog-svc-tag" style="--ec:234,88,12">launch</span>
-        </div>
-        <div class="clog-msg"><strong>Send by GroupChatOn is live.</strong> Peer-to-peer encrypted file transfer — any size, no uploads, no servers, browser to browser.</div>
-      </div>
-    </div>
-
-    <div class="clog-entry">
-      <div class="clog-ts">2026-11-02</div>
-      <div class="clog-sep" aria-hidden="true"></div>
-      <div class="clog-body">
-        <div class="clog-svc">
-          <span class="clog-ind" style="--ec:160,76,179"></span>
-          <span class="clog-svc-name" style="--ec:160,76,179">infinity.</span>
-          <span class="clog-svc-tag" style="--ec:160,76,179">upgrade</span>
-        </div>
-        <div class="clog-msg"><strong>Infinity is now a static PWA.</strong> 609 tools rebuilt on GitHub Pages — faster loads, full offline support, installable as an app.</div>
-      </div>
-    </div>
-
-    <div class="clog-entry">
-      <div class="clog-ts">2026-11-02</div>
-      <div class="clog-sep" aria-hidden="true"></div>
-      <div class="clog-body">
-        <div class="clog-svc">
-          <span class="clog-ind" style="--ec:13,148,136"></span>
-          <span class="clog-svc-name" style="--ec:13,148,136">help.</span>
-          <span class="clog-svc-tag" style="--ec:13,148,136">upgrade</span>
-        </div>
-        <div class="clog-msg"><strong>Help rebuilt on GitHub Pages.</strong> 867 articles now load faster, with full-text search and WhatsApp guides in Hindi, Punjabi, and Bhojpuri.</div>
-      </div>
-    </div>
-
-    <div class="clog-entry">
-      <div class="clog-ts">2026-11-02</div>
-      <div class="clog-sep" aria-hidden="true"></div>
-      <div class="clog-body">
-        <div class="clog-svc">
-          <span class="clog-ind" style="--ec:37,99,235"></span>
-          <span class="clog-svc-name" style="--ec:37,99,235">toolkit.</span>
-          <span class="clog-svc-tag" style="--ec:37,99,235">update</span>
-        </div>
-        <div class="clog-msg"><strong>Toolkit expanded to 17 kits.</strong> 87 Excel &amp; Word files covering GST, payroll, letters, agreements, restaurant, clinic, and construction.</div>
-      </div>
-    </div>
-
-    <div class="clog-entry">
-      <div class="clog-ts">2026-11-02</div>
-      <div class="clog-sep" aria-hidden="true"></div>
-      <div class="clog-body">
-        <div class="clog-svc">
-          <span class="clog-ind" style="--ec:95,179,76"></span>
-          <span class="clog-svc-name" style="--ec:95,179,76">novel.</span>
-          <span class="clog-svc-tag" style="--ec:95,179,76">launch</span>
-        </div>
-        <div class="clog-msg"><strong>GroupChatOn reading app launched.</strong> Installable PWA at app.groupchaton.com — offline reading, chapter sync, all novels free.</div>
-      </div>
-    </div>
-
-    <div class="clog-entry">
-      <div class="clog-ts">2026-11-02</div>
-      <div class="clog-sep" aria-hidden="true"></div>
-      <div class="clog-body">
-        <div class="clog-svc">
-          <span class="clog-ind" style="--ec:37,211,102"></span>
-          <span class="clog-svc-name" style="--ec:37,211,102">share.</span>
-          <span class="clog-svc-tag" style="--ec:37,211,102">launch</span>
-        </div>
-        <div class="clog-msg"><strong>Share launched on its own domain.</strong> 2,400+ WhatsApp groups and channels, with live search, categories, and a one-tap join flow.</div>
-      </div>
-    </div>
+    <div id="clog-entries" aria-live="polite"></div>
 
   </div>
 </div>
@@ -876,22 +800,7 @@ a{color:inherit;text-decoration:none}
   },{threshold:0.07,rootMargin:'0px 0px -28px 0px'});
   document.querySelectorAll('.sc, .fpill').forEach(function(el){ io.observe(el); });
 
-  /* stagger changelog entries */
-  document.querySelectorAll('.clog-entry').forEach(function(el, i){
-    el.style.opacity = '0';
-    el.style.transform = 'translateX(-8px)';
-    el.style.transition = 'opacity .4s ease ' + (i * .07 + .1) + 's, transform .4s ease ' + (i * .07 + .1) + 's';
-    var io2 = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(e.isIntersecting){
-          e.target.style.opacity = '1';
-          e.target.style.transform = 'none';
-          io2.unobserve(e.target);
-        }
-      });
-    },{threshold:0.08,rootMargin:'0px 0px -20px 0px'});
-    io2.observe(el);
-  });
+  /* changelog loaded via /changelog.json */
 
   /* fade the page in */
   document.body.classList.add('rdy');
@@ -899,5 +808,46 @@ a{color:inherit;text-decoration:none}
 </script>
 
 <script defer src="https://assets.niveshsahayak.in/assets/credit.js"></script>
+<script>
+(function(){
+  var MONTHS=['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+  function stagger(container){
+    container.querySelectorAll('.clog-entry').forEach(function(el,i){
+      el.style.opacity='0';
+      el.style.transform='translateX(-8px)';
+      el.style.transition='opacity .4s ease '+(i*.07+.1)+'s,transform .4s ease '+(i*.07+.1)+'s';
+      var io=new IntersectionObserver(function(ents){
+        ents.forEach(function(e){if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='none';io.unobserve(e.target);}});
+      },{threshold:0.08,rootMargin:'0px 0px -20px 0px'});
+      io.observe(el);
+    });
+  }
+  fetch('/changelog.json').then(function(r){return r.json();}).then(function(entries){
+    var html=entries.map(function(e){
+      return '<div class="clog-entry">'
+        +'<div class="clog-ts">'+e.date+'</div>'
+        +'<div class="clog-sep" aria-hidden="true"></div>'
+        +'<div class="clog-body">'
+          +'<div class="clog-svc">'
+            +'<span class="clog-ind" style="--ec:'+e.color+'"></span>'
+            +'<span class="clog-svc-name" style="--ec:'+e.color+'">'+e.service+'</span>'
+            +'<span class="clog-svc-tag" style="--ec:'+e.color+'">'+e.tag+'</span>'
+          +'</div>'
+          +'<div class="clog-msg">'+e.msg+'</div>'
+        +'</div>'
+      +'</div>';
+    }).join('');
+    var c=document.getElementById('clog-entries');
+    if(!c)return;
+    c.innerHTML=html;
+    if(entries.length){
+      var d=new Date(entries[0].date+'T00:00:00');
+      var m=document.getElementById('clog-month');
+      if(m)m.textContent=MONTHS[d.getMonth()]+' '+d.getFullYear();
+    }
+    stagger(c);
+  }).catch(function(){});
+})();
+</script>
 </body>
 </html>

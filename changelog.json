@@ -1,0 +1,44 @@
+[
+  {
+    "date": "2026-11-03",
+    "service": "send.",
+    "color": "234,88,12",
+    "tag": "launch",
+    "msg": "<strong>Send by GroupChatOn is live.</strong> Peer-to-peer encrypted file transfer — any size, no uploads, no servers, browser to browser."
+  },
+  {
+    "date": "2026-11-02",
+    "service": "infinity.",
+    "color": "160,76,179",
+    "tag": "upgrade",
+    "msg": "<strong>Infinity is now a static PWA.</strong> 609 tools rebuilt on GitHub Pages — faster loads, full offline support, installable as an app."
+  },
+  {
+    "date": "2026-11-02",
+    "service": "help.",
+    "color": "13,148,136",
+    "tag": "upgrade",
+    "msg": "<strong>Help rebuilt on GitHub Pages.</strong> 867 articles now load faster, with full-text search and WhatsApp guides in Hindi, Punjabi, and Bhojpuri."
+  },
+  {
+    "date": "2026-11-02",
+    "service": "toolkit.",
+    "color": "37,99,235",
+    "tag": "update",
+    "msg": "<strong>Toolkit expanded to 17 kits.</strong> 87 Excel &amp; Word files covering GST, payroll, letters, agreements, restaurant, clinic, and construction."
+  },
+  {
+    "date": "2026-11-02",
+    "service": "novel.",
+    "color": "95,179,76",
+    "tag": "launch",
+    "msg": "<strong>GroupChatOn reading app launched.</strong> Installable PWA at app.groupchaton.com — offline reading, chapter sync, all novels free."
+  },
+  {
+    "date": "2026-11-02",
+    "service": "share.",
+    "color": "37,211,102",
+    "tag": "launch",
+    "msg": "<strong>Share launched on its own domain.</strong> 2,400+ WhatsApp groups and channels, with live search, categories, and a one-tap join flow."
+  }
+]
