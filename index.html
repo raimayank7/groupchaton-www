@@ -211,18 +211,9 @@ ul{list-style:none}
 
 /* sponsor strip */
 .sponsor-strip{max-width:var(--w);margin:0 auto;padding:0 24px 48px}
-.sponsor-lbl{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--tx2);margin-bottom:12px}
-.sponsor-card{
-  display:flex;align-items:center;gap:16px;
-  background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);
-  padding:16px 20px;text-decoration:none;color:var(--tx);
-  transition:box-shadow var(--e),transform var(--e);max-width:600px;
-}
-.sponsor-card:hover{box-shadow:var(--sh);transform:translateY(-2px)}
-.sponsor-card img{width:48px;height:48px;object-fit:contain;border-radius:8px;flex-shrink:0}
-.sponsor-card-body{flex:1;min-width:0}
-.sponsor-card-title{font-weight:700;font-size:.9rem;margin-bottom:3px}
-.sponsor-card-desc{font-size:.82rem;color:var(--tx2);line-height:1.4}
+/* sponsor cards use .sc service-card styles with amber accent */
+.sc.spon-card{opacity:1;transform:none;max-width:460px}
+.spon-img{width:24px;height:24px;object-fit:contain;border-radius:4px;display:block}
 
 /* stat row */
 .stat-row{
@@ -866,13 +857,32 @@ details.fq[open] .fa{transform:rotate(180deg);stroke:var(--gco)}
     })();
     function cardHtml(c){
       var img=Array.isArray(c.imgs)?c.imgs[Math.floor(Math.random()*c.imgs.length)]:c.imgs;
-      return '<div class="sponsor-lbl">Sponsored</div>'+
-        '<a href="'+c.href+'" class="sponsor-card" target="_blank" rel="noopener sponsored">'+
-        (img?'<img src="'+img+'" alt="" loading="lazy">':'')+
-        '<div class="sponsor-card-body">'+
-        '<div class="sponsor-card-title">'+(c.title||c.name||'')+'</div>'+
-        '<div class="sponsor-card-desc">'+(c.line||c.desc||c.description||'')+'</div>'+
-        '</div></a>';
+      var title=c.title||c.name||'';
+      var desc=c.line||c.desc||c.description||'';
+      var tag=c.tag||'Sponsored';
+      var domain='';
+      try{domain=new URL(c.href).hostname.replace(/^www\./,'');}catch(e){}
+      var arrowSvg='<svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
+      var ico=img
+        ?'<img src="'+img+'" alt="" loading="lazy" class="spon-img">'
+        :'<svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:rgb(var(--acc));fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2"/></svg>';
+      return '<article class="sc spon-card" style="--acc:220,160,60">'+
+        '<div class="sc-bar"></div>'+
+        '<div class="sc-body">'+
+          '<div class="sc-head">'+
+            '<div class="sc-ic">'+ico+'</div>'+
+            '<div class="sc-label">'+
+              '<div class="sc-name">'+title+'</div>'+
+              (domain?'<div class="sc-domain">'+domain+'</div>':'')+
+            '</div>'+
+            '<span class="sc-tag">'+tag+'</span>'+
+          '</div>'+
+          '<p class="sc-desc">'+desc+'</p>'+
+          '<a href="'+c.href+'" class="sc-link" target="_blank" rel="noopener sponsored">'+
+            'Learn more'+arrowSvg+
+          '</a>'+
+        '</div>'+
+      '</article>';
     }
     function showSlot(el,c){el.innerHTML=cardHtml(c);el.style.display='';el.removeAttribute('aria-hidden');}
     fetch('https://share.groupchaton.com/promos.json?_='+Math.floor(Date.now()/3600000))
