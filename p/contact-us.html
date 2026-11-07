@@ -41,6 +41,7 @@ textarea{min-height:120px;resize:vertical}
   transition:background .15s,transform .15s;
 }
 .btn:hover{background:var(--gco-dk);transform:translateY(-1px)}
+.btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
 .note{font-size:.82rem;color:var(--tx2);margin-top:8px}
 .topics{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
 .topic{
@@ -52,7 +53,8 @@ textarea{min-height:120px;resize:vertical}
 #result{display:none;padding:14px 16px;border-radius:8px;font-size:.9rem;font-weight:600;margin-top:12px}
 #result.ok{background:rgba(95,179,76,.12);color:var(--gco)}
 #result.err{background:rgba(220,38,38,.1);color:#ef4444}
-.hny{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+/* clip honeypot off-screen without absolute positioning (avoids RTL scroll) */
+.hny{clip:rect(0,0,0,0);position:absolute;width:1px;height:1px;overflow:hidden}
 footer{text-align:center;padding:24px;font-size:.8rem;color:var(--tx2);border-top:1px solid var(--bd)}
 footer a{color:var(--tx2)}footer a:hover{color:var(--gco)}
 </style>
@@ -83,13 +85,15 @@ footer a{color:var(--tx2)}footer a:hover{color:var(--gco)}
     </div>
 
     <form id="cf" novalidate>
-      <span class="hny" aria-hidden="true"><input tabindex="-1" autocomplete="off" name="website" id="hny"></span>
+      <span class="hny" aria-hidden="true"><input tabindex="-1" autocomplete="off" name="_gotcha"></span>
+      <input type="hidden" name="_subject" id="cf-subject" value="GroupChatOn Contact">
+      <input type="hidden" name="_next" value="https://www.groupchaton.com/p/contact-us.html?sent=1">
       <label for="cf-msg">Your message <span style="color:#ef4444">*</span></label>
-      <textarea id="cf-msg" name="msg" placeholder="Describe what you found or what you need…" required></textarea>
+      <textarea id="cf-msg" name="message" placeholder="Describe what you found or what you need…" required></textarea>
       <label for="cf-name">Your name (optional)</label>
       <input id="cf-name" name="name" type="text" placeholder="e.g. Priya" autocomplete="name">
       <label for="cf-reply">Email or phone to reply to (optional)</label>
-      <input id="cf-reply" name="reply" type="text" placeholder="e.g. hello@example.com" autocomplete="email">
+      <input id="cf-reply" name="email" type="text" placeholder="e.g. hello@example.com" autocomplete="email">
       <button type="submit" class="btn" id="cf-send">
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
         Send message
@@ -109,6 +113,9 @@ footer a{color:var(--tx2)}footer a:hover{color:var(--gco)}
 
 <script>
 (function(){
+  /* ── Formspree form ID – replace with yours from formspree.io ── */
+  var FORMSPREE_ID = '';   /* e.g. 'xpznkqbd' */
+
   /* topic picker */
   var chosen = '';
   var btns = document.querySelectorAll('.topic');
@@ -117,40 +124,79 @@ footer a{color:var(--tx2)}footer a:hover{color:var(--gco)}
       btns.forEach(function(x){x.classList.remove('on')});
       b.classList.add('on');
       chosen = b.getAttribute('data-t');
+      document.getElementById('cf-subject').value =
+        'GroupChatOn' + (chosen ? ' – ' + chosen : '');
     });
   });
 
-  /* form submit */
+  /* show sent=1 success on redirect-based fallback */
+  if(location.search.indexOf('sent=1') !== -1){
+    var r = document.getElementById('result');
+    r.textContent = '✓ Message sent! We\'ll reply within 2–3 days.';
+    r.className = 'ok'; r.style.display = '';
+  }
+
   var form = document.getElementById('cf');
   var result = document.getElementById('result');
   var t0 = Date.now();
-  form.addEventListener('submit',function(ev){
-    ev.preventDefault();
-    var msg = document.getElementById('cf-msg').value.trim();
-    var name = document.getElementById('cf-name').value.trim();
-    var reply = document.getElementById('cf-reply').value.trim();
-    var hny = document.getElementById('hny').value;
-    if(hny) return;
-    if(Date.now()-t0 < 3000) return;
+
+  form.addEventListener('submit', function(ev){
+    var msg   = document.getElementById('cf-msg').value.trim();
+    var hny   = form.querySelector('[name="_gotcha"]').value;
+
+    if(hny) return; /* honeypot */
+    if(Date.now() - t0 < 3000) return; /* too fast = bot */
     if(msg.length < 10){
+      ev.preventDefault();
       showResult('Please write a message of at least 10 characters.', false);
       return;
     }
+
+    if(!FORMSPREE_ID){
+      /* ── No ID yet: fall back to WhatsApp ── */
+      ev.preventDefault();
+      var name  = document.getElementById('cf-name').value.trim();
+      var reply = document.getElementById('cf-reply').value.trim();
+      var text  = (chosen ? '[' + chosen + '] ' : '') + msg
+                + (name  ? '\n— ' + name  : '')
+                + (reply ? '\nReply: ' + reply : '');
+      var copied = false;
+      try{ navigator.clipboard.writeText(text); copied = true; }catch(e){}
+      window.open('https://wa.me/918054009300?text=' + encodeURIComponent(text), '_blank', 'noopener');
+      showResult('Opening WhatsApp… your message' + (copied ? ' has been copied to clipboard.' : ' is ready to send.'), true);
+      return;
+    }
+
+    /* ── Formspree AJAX submit ── */
+    ev.preventDefault();
     var btn = document.getElementById('cf-send');
     btn.disabled = true;
     btn.textContent = 'Sending…';
 
-    /* Copy to clipboard + open WhatsApp as fallback method */
-    var text = (chosen?'['+chosen+'] ':'')+msg+(name?'\n— '+name:'')+(reply?'\nReply: '+reply:'');
-    var copied = false;
-    try{navigator.clipboard.writeText(text);copied=true;}catch(e){}
-
-    /* Open WhatsApp contact — fastest way for mobile users */
-    var wa = 'https://wa.me/918054009300?text='+encodeURIComponent(text);
-    window.open(wa,'_blank','noopener');
-    showResult('Opening WhatsApp… your message'+(copied?' has been copied to clipboard.':' is ready to send.'), true);
-    btn.disabled = false;
-    btn.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send message';
+    var data = new FormData(form);
+    fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: data
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if(d.ok){
+        showResult('✓ Message sent! We\'ll reply within 2–3 days.', true);
+        form.reset(); chosen = '';
+        btns.forEach(function(x){ x.classList.remove('on'); });
+      } else {
+        var err = (d.errors || []).map(function(e){ return e.message; }).join(', ');
+        showResult('Something went wrong' + (err ? ': ' + err : '') + '. Try again or use WhatsApp.', false);
+      }
+    })
+    .catch(function(){
+      showResult('Could not send — check your connection and try again.', false);
+    })
+    .finally(function(){
+      btn.disabled = false;
+      btn.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send message';
+    });
   });
 
   function showResult(msg, ok){
