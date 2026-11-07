@@ -113,8 +113,8 @@ footer a{color:var(--tx2)}footer a:hover{color:var(--gco)}
 
 <script>
 (function(){
-  /* ── Formspree form ID – replace with yours from formspree.io ── */
-  var FORMSPREE_ID = 'mgaabnlw';
+  /* ── FormSubmit.co endpoint ── */
+  var SUBMIT_URL = 'https://formsubmit.co/ajax/mayankrai.ldh@gmail.com';
 
   /* topic picker */
   var chosen = '';
@@ -152,42 +152,34 @@ footer a{color:var(--tx2)}footer a:hover{color:var(--gco)}
       return;
     }
 
-    if(!FORMSPREE_ID){
-      /* ── No ID yet: fall back to WhatsApp ── */
-      ev.preventDefault();
-      var name  = document.getElementById('cf-name').value.trim();
-      var reply = document.getElementById('cf-reply').value.trim();
-      var text  = (chosen ? '[' + chosen + '] ' : '') + msg
-                + (name  ? '\n— ' + name  : '')
-                + (reply ? '\nReply: ' + reply : '');
-      var copied = false;
-      try{ navigator.clipboard.writeText(text); copied = true; }catch(e){}
-      window.open('https://wa.me/918054009300?text=' + encodeURIComponent(text), '_blank', 'noopener');
-      showResult('Opening WhatsApp… your message' + (copied ? ' has been copied to clipboard.' : ' is ready to send.'), true);
-      return;
-    }
-
-    /* ── Formspree AJAX submit ── */
+    /* ── FormSubmit.co AJAX submit ── */
     ev.preventDefault();
-    var btn = document.getElementById('cf-send');
+    var name  = document.getElementById('cf-name').value.trim();
+    var reply = document.getElementById('cf-reply').value.trim();
+    var btn   = document.getElementById('cf-send');
     btn.disabled = true;
     btn.textContent = 'Sending…';
 
-    var data = new FormData(form);
-    fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+    fetch(SUBMIT_URL, {
       method: 'POST',
-      headers: { 'Accept': 'application/json' },
-      body: data
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        message: msg,
+        name: name || '(not given)',
+        email: reply || '(not given)',
+        _subject: document.getElementById('cf-subject').value,
+        _captcha: 'false'
+      })
     })
     .then(function(r){ return r.json(); })
     .then(function(d){
-      if(d.ok){
+      if(d.success === 'true'){
         showResult('✓ Message sent! We\'ll reply within 2–3 days.', true);
         form.reset(); chosen = '';
         btns.forEach(function(x){ x.classList.remove('on'); });
+        document.getElementById('cf-subject').value = 'GroupChatOn Contact';
       } else {
-        var err = (d.errors || []).map(function(e){ return e.message; }).join(', ');
-        showResult('Something went wrong' + (err ? ': ' + err : '') + '. Try again or use WhatsApp.', false);
+        showResult('Something went wrong. Try again or message us on WhatsApp.', false);
       }
     })
     .catch(function(){
