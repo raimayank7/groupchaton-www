@@ -211,9 +211,69 @@ ul{list-style:none}
 
 /* sponsor strip */
 .sponsor-strip{max-width:var(--w);margin:0 auto;padding:0 24px 48px}
-/* sponsor cards use .sc service-card styles with amber accent */
-.sc.spon-card{opacity:1;transform:none}
-.spon-img{width:24px;height:24px;object-fit:contain;border-radius:4px;display:block}
+/* sponsor cards — wide horizontal layout (image left + content right) */
+.spon-grid{display:flex;flex-direction:column;gap:14px}
+.spon-card{
+  display:flex;
+  background:var(--sf);
+  border:1px solid var(--bd);
+  border-radius:var(--r);
+  overflow:hidden;
+  transition:box-shadow var(--e),transform var(--e),border-color var(--e);
+}
+.spon-card:hover{box-shadow:var(--sh);transform:translateY(-2px);border-color:rgba(220,160,60,.3)}
+.spon-img-wrap{
+  flex:0 0 42%;max-width:360px;
+  overflow:hidden;
+  background:var(--sf2);
+  min-height:140px;
+}
+.spon-img-wrap img{width:100%;height:100%;object-fit:cover;display:block}
+.spon-body{
+  flex:1;min-width:0;
+  padding:22px 24px;
+  display:flex;flex-direction:column;gap:10px;
+}
+.spon-badge{
+  display:inline-flex;align-self:flex-start;
+  font-size:.68rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  font-family:var(--mono);
+  padding:3px 9px;border-radius:5px;
+  background:rgba(220,160,60,.12);color:rgb(220,160,60);
+  border:1px solid rgba(220,160,60,.2);
+}
+.spon-title{font-size:1.1rem;font-weight:800;line-height:1.25;color:var(--tx)}
+.spon-desc{font-size:.875rem;color:var(--tx2);line-height:1.6;flex:1}
+.spon-cta{
+  display:inline-flex;align-items:center;gap:8px;
+  align-self:flex-start;
+  padding:9px 18px;border-radius:7px;
+  background:rgba(95,179,76,.18);
+  color:var(--gco);
+  font-size:.82rem;font-weight:700;
+  border:1px solid rgba(95,179,76,.25);
+  transition:background var(--e),transform var(--e);
+}
+.spon-cta:hover{background:rgba(95,179,76,.28);transform:translateY(-1px)}
+.spon-note{font-size:.75rem;color:var(--tx3)}
+@media(max-width:600px){
+  .spon-card{flex-direction:column}
+  .spon-img-wrap{flex:none;max-width:none;height:180px}
+  .spon-body{padding:16px}
+}
+/* small-screen alignment fixes */
+@media(max-width:480px){
+  .hero{padding:64px 16px 56px}
+  .sec{padding:52px 16px}
+  .sponsor-strip{padding:0 16px 36px}
+  .btn{padding:11px 18px}
+  .svc-chips{gap:6px}
+  .svc-chip{font-size:.74rem;padding:4px 10px}
+}
+@media(max-width:360px){
+  .stat-n{font-size:1.2rem}
+  .stat-l{font-size:.7rem}
+}
 
 /* stat row */
 .stat-row{
@@ -859,28 +919,18 @@ details.fq[open] .fa{transform:rotate(180deg);stroke:var(--gco)}
       var img=Array.isArray(c.imgs)?c.imgs[Math.floor(Math.random()*c.imgs.length)]:c.imgs;
       var title=c.title||c.name||'';
       var desc=c.line||c.desc||c.description||'';
-      var tag=c.tag||'Sponsored';
-      var domain='';
-      try{domain=new URL(c.href).hostname.replace(/^www\./,'');}catch(e){}
-      var arrowSvg='<svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
-      var ico=img
-        ?'<img src="'+img+'" alt="" loading="lazy" class="spon-img">'
-        :'<svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:rgb(var(--acc));fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2"/></svg>';
-      return '<article class="sc spon-card" style="--acc:220,160,60">'+
-        '<div class="sc-bar"></div>'+
-        '<div class="sc-body">'+
-          '<div class="sc-head">'+
-            '<div class="sc-ic">'+ico+'</div>'+
-            '<div class="sc-label">'+
-              '<div class="sc-name">'+title+'</div>'+
-              (domain?'<div class="sc-domain">'+domain+'</div>':'')+
-            '</div>'+
-            '<span class="sc-tag">'+tag+'</span>'+
-          '</div>'+
-          '<p class="sc-desc">'+desc+'</p>'+
-          '<a href="'+c.href+'" class="sc-link" target="_blank" rel="noopener sponsored">'+
-            'Learn more'+arrowSvg+
-          '</a>'+
+      var cta=c.cta||title||'Visit site';
+      var badge=c.tag||'Sponsored';
+      var note=c.note||c.subtitle||'';
+      var imgHtml=img?'<img src="'+img+'" alt="" loading="lazy">':'';
+      return '<article class="spon-card">'+
+        (imgHtml?'<div class="spon-img-wrap">'+imgHtml+'</div>':'')+
+        '<div class="spon-body">'+
+          '<span class="spon-badge">'+badge+'</span>'+
+          '<div class="spon-title">'+title+'</div>'+
+          (desc?'<p class="spon-desc">'+desc+'</p>':'')+
+          '<a href="'+c.href+'" class="spon-cta" target="_blank" rel="noopener sponsored">'+cta+'</a>'+
+          (note?'<span class="spon-note">'+note+'</span>':'')+
         '</div>'+
       '</article>';
     }
@@ -896,21 +946,21 @@ details.fq[open] .fa{transform:rotate(180deg);stroke:var(--gco)}
         if(!pool.length) return;
         /* shuffle */
         for(var i=pool.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=pool[i];pool[i]=pool[j];pool[j]=t;}
-        /* render all cards as a grid in the first slot */
+        /* render all cards stacked in the first slot */
         var hero=document.getElementById(SLOTS[0]);
         if(hero){
-          var html='<div class="sc-grid">';
+          var html='<div class="spon-grid">';
           for(var k=0;k<pool.length;k++) html+=cardHtml(pool[k]);
           html+='</div>';
           hero.innerHTML=html;
           hero.style.display='';
           hero.removeAttribute('aria-hidden');
         }
-        /* mid + bottom slots each get one card (different from each other) */
+        /* mid + bottom slots each get one card wrapped in a spon-grid */
         for(var s=1;s<SLOTS.length;s++){
           if(s>=pool.length) break;
           var el=document.getElementById(SLOTS[s]);
-          if(el){el.innerHTML=cardHtml(pool[s]);el.style.display='';el.removeAttribute('aria-hidden');}
+          if(el){el.innerHTML='<div class="spon-grid">'+cardHtml(pool[s])+'</div>';el.style.display='';el.removeAttribute('aria-hidden');}
         }
       }).catch(function(){});
   })();
