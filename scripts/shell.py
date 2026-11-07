@@ -39,7 +39,7 @@ THEME_SCRIPT = (
 
 PAGE_HEADER_HTML = (
     "<header>\n"
-    f'  <img src="{BRAND}/favicon.png" alt="" width="22" height="22">\n'
+    f'  <img src="{BRAND}/favicon.png" alt="" width="32" height="32">\n'
     '  <a href="/" class="home">GroupChatOn</a>\n'
     "</header>"
 )
