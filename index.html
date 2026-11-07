@@ -115,6 +115,24 @@ a{color:inherit;text-decoration:none}
   to{transform:scale(1.08) translate(-1.2%,1.2%);opacity:1}
 }
 
+/* ── Theme-aware logo ───────────────────────── */
+/* dark = default (shows gco-dark.png full wordmark, hides text) */
+.logo-lt{display:none}
+.logo-dk{display:block}
+.brand-name{display:none}  /* dark wordmark already has text */
+/* light mode: show bubble icon + text, hide full wordmark */
+@media(prefers-color-scheme:light){
+  :root:not([data-theme="dark"]) .logo-dk{display:none}
+  :root:not([data-theme="dark"]) .logo-lt{display:block}
+  :root:not([data-theme="dark"]) .brand-name{display:inline}
+}
+:root[data-theme="light"] .logo-dk{display:none}
+:root[data-theme="light"] .logo-lt{display:block}
+:root[data-theme="light"] .brand-name{display:inline}
+:root[data-theme="dark"] .logo-dk{display:block}
+:root[data-theme="dark"] .logo-lt{display:none}
+:root[data-theme="dark"] .brand-name{display:none}
+
 /* ── Nav ────────────────────────────────────── */
 .nav{
   position:sticky;top:0;z-index:100;
@@ -125,18 +143,21 @@ a{color:inherit;text-decoration:none}
   -webkit-backdrop-filter:blur(22px) saturate(1.5);
   border-bottom:1px solid var(--bd);
 }
-:root[data-theme="light"] .nav,
-@media(prefers-color-scheme:light){:root:not([data-theme="dark"]) .nav}{
-  background:rgba(241,251,238,.87);
+@media(prefers-color-scheme:light){
+  :root:not([data-theme="dark"]) .nav{background:rgba(241,251,238,.87)}
 }
+:root[data-theme="light"] .nav{background:rgba(241,251,238,.88)}
 
 .nav-brand{
   display:flex;align-items:center;gap:9px;
   font-weight:800;font-size:1.07rem;letter-spacing:-.025em;
   flex-shrink:0;
 }
-.nav-brand img{width:28px;height:28px;border-radius:7px;flex-shrink:0}
-.nav-brand .gn{color:var(--gco)}
+/* dark full wordmark */
+.logo-dk{height:30px;width:auto;max-width:160px;border-radius:4px;flex-shrink:0}
+/* light bubble icon */
+.logo-lt{width:28px;height:28px;border-radius:7px;flex-shrink:0}
+.brand-name .gn{color:var(--gco)}
 
 .nav-r{display:flex;align-items:center;gap:7px}
 .nb{
@@ -158,7 +179,7 @@ a{color:inherit;text-decoration:none}
   position:relative;z-index:1;
   min-height:calc(100svh - 52px);
   display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;padding:72px 20px 100px;gap:0;
+  text-align:center;padding:72px 20px 90px;gap:0;
 }
 .hero-pill{
   display:inline-flex;align-items:center;gap:8px;
@@ -191,7 +212,7 @@ a{color:inherit;text-decoration:none}
   color:var(--tx2);line-height:1.75;
   max-width:540px;margin:0 auto 36px;
 }
-.hero-cta{display:flex;gap:11px;justify-content:center;flex-wrap:wrap;margin-bottom:0}
+.hero-cta{display:flex;gap:11px;justify-content:center;flex-wrap:wrap;margin-bottom:40px}
 .hbtn{
   display:inline-flex;align-items:center;gap:7px;
   padding:12px 24px;border-radius:11px;
@@ -211,6 +232,32 @@ a{color:inherit;text-decoration:none}
 }
 .hbtn-sec:hover{border-color:var(--bd2);transform:translateY(-3px)}
 .hbtn svg{width:14px;height:14px;flex-shrink:0}
+
+/* ── Platform stats (hero) ──────────────────── */
+.hero-stats{
+  display:flex;gap:0;
+  border:1px solid var(--bd);border-radius:var(--rad);
+  background:var(--sf);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  overflow:hidden;
+}
+.hstat{
+  padding:16px 22px;text-align:center;
+  border-right:1px solid var(--bd);
+  flex:1;min-width:80px;
+}
+.hstat:last-child{border-right:none}
+.hstat-n{
+  font-family:var(--mono);font-size:1.3rem;font-weight:500;
+  color:var(--gco);line-height:1;display:block;
+}
+.hstat-l{font-size:.7rem;color:var(--tx2);margin-top:4px;display:block;white-space:nowrap}
+@media(max-width:460px){
+  .hero-stats{flex-wrap:wrap}
+  .hstat{flex:calc(50% - 1px);border-bottom:1px solid var(--bd)}
+  .hstat:nth-child(2){border-right:none}
+  .hstat:nth-last-child(-n+2){border-bottom:none}
+}
+
 /* scroll indicator */
 .scroll-hint{
   position:absolute;bottom:26px;left:50%;transform:translateX(-50%);
@@ -341,6 +388,95 @@ a{color:inherit;text-decoration:none}
 .sc:hover .sc-link{gap:11px}
 .sc-link svg{width:12px;height:12px;flex-shrink:0}
 
+/* ── Changelog section ──────────────────────── */
+.changelog-wrap{
+  position:relative;z-index:1;
+  max-width:1180px;margin:0 auto;
+  padding:0 20px 72px;
+}
+.clog-hd{
+  display:flex;align-items:center;gap:14px;
+  margin-bottom:28px;
+}
+.clog-label{
+  display:flex;align-items:center;gap:9px;
+  font-family:var(--mono);font-size:.74rem;
+  color:var(--gco);letter-spacing:.08em;
+  white-space:nowrap;
+}
+.clog-label::before{content:'//';color:var(--tx3);margin-right:1px}
+.clog-line{flex:1;height:1px;background:var(--bd)}
+
+.clog-box{
+  background:var(--sf);
+  border:1px solid var(--bd);
+  border-radius:var(--rad);
+  overflow:hidden;
+}
+/* terminal top bar */
+.clog-top{
+  display:flex;align-items:center;gap:7px;
+  padding:10px 16px;
+  background:rgba(95,179,76,.04);
+  border-bottom:1px solid var(--bd);
+}
+.clog-dot-r{width:11px;height:11px;border-radius:50%;background:#ff5f56;flex-shrink:0}
+.clog-dot-y{width:11px;height:11px;border-radius:50%;background:#febc2e;flex-shrink:0}
+.clog-dot-g{width:11px;height:11px;border-radius:50%;background:#27c840;flex-shrink:0}
+.clog-title-bar{flex:1;text-align:center;font-family:var(--mono);font-size:.7rem;color:var(--tx3)}
+
+.clog-entry{
+  display:flex;align-items:flex-start;gap:0;
+  padding:0;
+  border-bottom:1px solid rgba(95,179,76,.06);
+  transition:background var(--ease);
+}
+.clog-entry:last-child{border-bottom:none}
+.clog-entry:hover{background:rgba(95,179,76,.035)}
+.clog-ts{
+  flex-shrink:0;width:100px;
+  padding:14px 0 14px 20px;
+  font-family:var(--mono);font-size:.7rem;color:var(--tx3);
+  line-height:1.3;
+}
+.clog-sep{
+  flex-shrink:0;width:1px;
+  margin:10px 16px;
+  background:var(--bd);
+}
+.clog-body{flex:1;padding:12px 0;min-width:0}
+.clog-svc{
+  display:flex;align-items:center;gap:8px;
+  margin-bottom:4px;
+}
+.clog-ind{
+  width:7px;height:7px;border-radius:50%;flex-shrink:0;
+  background:rgb(var(--ec,95,179,76));
+  box-shadow:0 0 5px rgba(var(--ec,95,179,76),.5);
+}
+.clog-svc-name{
+  font-family:var(--mono);font-size:.72rem;font-weight:500;
+  color:rgb(var(--ec,95,179,76));
+  letter-spacing:.02em;
+}
+.clog-svc-tag{
+  font-family:var(--mono);font-size:.65rem;
+  background:rgba(var(--ec,95,179,76),.1);
+  color:rgb(var(--ec,95,179,76));
+  border:1px solid rgba(var(--ec,95,179,76),.2);
+  border-radius:999px;padding:1px 7px;
+}
+.clog-msg{
+  font-size:.86rem;color:var(--tx2);line-height:1.55;
+  padding-right:20px;
+}
+.clog-msg strong{color:var(--tx);font-weight:600}
+@media(max-width:560px){
+  .clog-ts{display:none}
+  .clog-sep{display:none}
+  .clog-body{padding:12px 16px}
+}
+
 /* ── Feature pills ──────────────────────────── */
 .feats-row{
   position:relative;z-index:1;
@@ -399,10 +535,12 @@ a{color:inherit;text-decoration:none}
 .footer-brand{
   display:flex;align-items:center;gap:9px;
   margin-bottom:7px;
-  font-weight:800;font-size:1rem;letter-spacing:-.02em;
 }
-.footer-brand img{width:24px;height:24px;border-radius:5px}
-.footer-brand .gn{color:var(--gco)}
+/* dark full wordmark in footer */
+.footer-brand .logo-dk{height:24px;width:auto;max-width:130px;border-radius:3px}
+/* light bubble in footer */
+.footer-brand .logo-lt{width:22px;height:22px;border-radius:4px}
+.footer-brand .brand-name{font-weight:800;font-size:1rem;letter-spacing:-.02em}
 .footer-tag{font-size:.83rem;color:var(--tx2);line-height:1.6;max-width:280px}
 .footer-copy{font-size:.75rem;color:var(--tx3);margin-top:10px;font-family:var(--mono)}
 .footer-cred{margin-top:11px;padding-top:11px;border-top:1px solid var(--bd)}
@@ -416,12 +554,6 @@ a{color:inherit;text-decoration:none}
   font-size:.83rem;color:var(--tx2);transition:color var(--ease);white-space:nowrap;
 }
 .footer-nav a:hover{color:var(--gco)}
-
-/* ── Light nav glass fix ────────────────────── */
-@media(prefers-color-scheme:light){
-  :root:not([data-theme="dark"]) .nav{background:rgba(241,251,238,.88)}
-}
-:root[data-theme="light"] .nav{background:rgba(241,251,238,.88)}
 </style>
 </head>
 
@@ -431,9 +563,12 @@ a{color:inherit;text-decoration:none}
 
 <!-- ── Nav ── -->
 <header class="nav">
-  <a href="/" class="nav-brand">
-    <img src="https://assets.groupchaton.com/assets/brand/favicon-32.png" alt="" width="28" height="28" loading="eager">
-    Group<span class="gn">ChatOn</span>
+  <a href="/" class="nav-brand" aria-label="GroupChatOn home">
+    <!-- dark mode: full wordmark (gco-dark.png has bubble + "GroupChatOn" text) -->
+    <img src="/gco-dark.png" class="logo-dk" alt="GroupChatOn" width="140" height="30" loading="eager">
+    <!-- light mode: bubble icon only, text added separately -->
+    <img src="/gco-light.png" class="logo-lt" alt="" width="28" height="28" loading="eager">
+    <span class="brand-name">Group<span class="gn">ChatOn</span></span>
   </a>
   <div class="nav-r">
     <a href="https://infinity.groupchaton.com/" class="nb nb-ghost" aria-label="Infinity Tools">Tools</a>
@@ -458,6 +593,13 @@ a{color:inherit;text-decoration:none}
     </a>
     <a href="https://share.groupchaton.com/" class="hbtn hbtn-sec">Find WhatsApp Groups</a>
   </div>
+  <!-- platform stats -->
+  <div class="hero-stats" role="list" aria-label="Platform statistics">
+    <div class="hstat" role="listitem"><span class="hstat-n">609</span><span class="hstat-l">Free Tools</span></div>
+    <div class="hstat" role="listitem"><span class="hstat-n">2,400+</span><span class="hstat-l">Groups Listed</span></div>
+    <div class="hstat" role="listitem"><span class="hstat-n">867+</span><span class="hstat-l">Help Articles</span></div>
+    <div class="hstat" role="listitem"><span class="hstat-n">24</span><span class="hstat-l">Languages</span></div>
+  </div>
   <div class="scroll-hint" aria-hidden="true">
     <svg width="16" height="22" viewBox="0 0 16 22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5.25" y="1.25" width="5.5" height="11.5" rx="2.75"/><line x1="8" y1="14" x2="8" y2="19"/><polyline points="5.5,17 8,19.5 10.5,17"/></svg>
     <span>scroll</span>
@@ -468,14 +610,14 @@ a{color:inherit;text-decoration:none}
 <div class="ticker-wrap" aria-hidden="true" role="presentation">
   <div class="ticker">
     <div class="ticker-item"><span class="tn">609</span> Free Online Tools</div>
-    <div class="ticker-item"><span class="tn">2,000+</span> WhatsApp Groups</div>
+    <div class="ticker-item"><span class="tn">2,400+</span> WhatsApp Groups</div>
     <div class="ticker-item"><span class="tn">0 ₹</span> Cost — Free Forever</div>
     <div class="ticker-item"><span class="tn">0</span> Logins Required</div>
     <div class="ticker-item"><span class="tn">24</span> Indian Languages</div>
     <div class="ticker-item"><span class="tn">100+</span> Office Templates</div>
     <div class="ticker-item"><span class="tn">P2P</span> Encrypted File Transfer</div>
     <div class="ticker-item"><span class="tn">609</span> Free Online Tools</div>
-    <div class="ticker-item"><span class="tn">2,000+</span> WhatsApp Groups</div>
+    <div class="ticker-item"><span class="tn">2,400+</span> WhatsApp Groups</div>
     <div class="ticker-item"><span class="tn">0 ₹</span> Cost — Free Forever</div>
     <div class="ticker-item"><span class="tn">0</span> Logins Required</div>
     <div class="ticker-item"><span class="tn">24</span> Indian Languages</div>
@@ -536,7 +678,7 @@ a{color:inherit;text-decoration:none}
     <a href="https://share.groupchaton.com/" class="sc" style="--c:37,211,102" aria-label="Share by GroupChatOn — WhatsApp Group Directory">
       <div class="sc-top">
         <div class="sc-icon">👥</div>
-        <span class="sc-badge">2,000+ Groups</span>
+        <span class="sc-badge">2,400+ Groups</span>
       </div>
       <div class="sc-title">Share by GroupChatOn</div>
       <div class="sc-desc">Find and share WhatsApp groups and channels. Browse by category, language, or type. Add your group free — no login.</div>
@@ -575,6 +717,102 @@ a{color:inherit;text-decoration:none}
   </div>
 </section>
 
+<!-- ── Changelog ── -->
+<div class="changelog-wrap" aria-labelledby="clog-h">
+  <div class="clog-hd">
+    <div class="clog-label" id="clog-h">what's new</div>
+    <div class="clog-line" aria-hidden="true"></div>
+    <div class="clog-label" aria-hidden="true">nov 2026</div>
+  </div>
+  <div class="clog-box" role="log" aria-label="Recent updates across GroupChatOn services">
+    <div class="clog-top" aria-hidden="true">
+      <span class="clog-dot-r"></span>
+      <span class="clog-dot-y"></span>
+      <span class="clog-dot-g"></span>
+      <span class="clog-title-bar">groupchaton — platform changelog</span>
+    </div>
+
+    <div class="clog-entry">
+      <div class="clog-ts">2026-11-03</div>
+      <div class="clog-sep" aria-hidden="true"></div>
+      <div class="clog-body">
+        <div class="clog-svc">
+          <span class="clog-ind" style="--ec:234,88,12"></span>
+          <span class="clog-svc-name" style="--ec:234,88,12">send.</span>
+          <span class="clog-svc-tag" style="--ec:234,88,12">launch</span>
+        </div>
+        <div class="clog-msg"><strong>Send by GroupChatOn is live.</strong> Peer-to-peer encrypted file transfer — any size, no uploads, no servers, browser to browser.</div>
+      </div>
+    </div>
+
+    <div class="clog-entry">
+      <div class="clog-ts">2026-11-02</div>
+      <div class="clog-sep" aria-hidden="true"></div>
+      <div class="clog-body">
+        <div class="clog-svc">
+          <span class="clog-ind" style="--ec:160,76,179"></span>
+          <span class="clog-svc-name" style="--ec:160,76,179">infinity.</span>
+          <span class="clog-svc-tag" style="--ec:160,76,179">upgrade</span>
+        </div>
+        <div class="clog-msg"><strong>Infinity is now a static PWA.</strong> 609 tools rebuilt on GitHub Pages — faster loads, full offline support, installable as an app.</div>
+      </div>
+    </div>
+
+    <div class="clog-entry">
+      <div class="clog-ts">2026-11-02</div>
+      <div class="clog-sep" aria-hidden="true"></div>
+      <div class="clog-body">
+        <div class="clog-svc">
+          <span class="clog-ind" style="--ec:13,148,136"></span>
+          <span class="clog-svc-name" style="--ec:13,148,136">help.</span>
+          <span class="clog-svc-tag" style="--ec:13,148,136">upgrade</span>
+        </div>
+        <div class="clog-msg"><strong>Help rebuilt on GitHub Pages.</strong> 867 articles now load faster, with full-text search and WhatsApp guides in Hindi, Punjabi, and Bhojpuri.</div>
+      </div>
+    </div>
+
+    <div class="clog-entry">
+      <div class="clog-ts">2026-11-02</div>
+      <div class="clog-sep" aria-hidden="true"></div>
+      <div class="clog-body">
+        <div class="clog-svc">
+          <span class="clog-ind" style="--ec:37,99,235"></span>
+          <span class="clog-svc-name" style="--ec:37,99,235">toolkit.</span>
+          <span class="clog-svc-tag" style="--ec:37,99,235">update</span>
+        </div>
+        <div class="clog-msg"><strong>Toolkit expanded to 17 kits.</strong> 87 Excel &amp; Word files covering GST, payroll, letters, agreements, restaurant, clinic, and construction.</div>
+      </div>
+    </div>
+
+    <div class="clog-entry">
+      <div class="clog-ts">2026-11-02</div>
+      <div class="clog-sep" aria-hidden="true"></div>
+      <div class="clog-body">
+        <div class="clog-svc">
+          <span class="clog-ind" style="--ec:95,179,76"></span>
+          <span class="clog-svc-name" style="--ec:95,179,76">novel.</span>
+          <span class="clog-svc-tag" style="--ec:95,179,76">launch</span>
+        </div>
+        <div class="clog-msg"><strong>GroupChatOn reading app launched.</strong> Installable PWA at app.groupchaton.com — offline reading, chapter sync, all novels free.</div>
+      </div>
+    </div>
+
+    <div class="clog-entry">
+      <div class="clog-ts">2026-11-02</div>
+      <div class="clog-sep" aria-hidden="true"></div>
+      <div class="clog-body">
+        <div class="clog-svc">
+          <span class="clog-ind" style="--ec:37,211,102"></span>
+          <span class="clog-svc-name" style="--ec:37,211,102">share.</span>
+          <span class="clog-svc-tag" style="--ec:37,211,102">launch</span>
+        </div>
+        <div class="clog-msg"><strong>Share launched on its own domain.</strong> 2,400+ WhatsApp groups and channels, with live search, categories, and a one-tap join flow.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 <!-- ── Feature pills ── -->
 <div class="feats-row" aria-label="Key benefits">
   <div class="fpill"><em>🆓</em> Free Forever</div>
@@ -599,8 +837,9 @@ a{color:inherit;text-decoration:none}
   <div class="footer-inner">
     <div>
       <div class="footer-brand">
-        <img src="https://assets.groupchaton.com/assets/brand/favicon-32.png" alt="" width="24" height="24">
-        Group<span class="gn">ChatOn</span>
+        <img src="/gco-dark.png" class="logo-dk" alt="GroupChatOn" width="110" height="24" loading="lazy">
+        <img src="/gco-light.png" class="logo-lt" alt="" width="22" height="22" loading="lazy">
+        <span class="brand-name">Group<span class="gn">ChatOn</span></span>
       </div>
       <p class="footer-tag">Free novels, tools, groups, and apps — built for everyone.</p>
       <div class="footer-copy">© 2026 GroupChatOn. All rights reserved.</div>
@@ -642,7 +881,7 @@ a{color:inherit;text-decoration:none}
     btn.textContent = next === 'dark' ? '☀️' : '🌙';
   });
 
-  /* scroll-reveal for cards and pills */
+  /* scroll-reveal for cards, pills, and changelog entries */
   var io = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
       if(e.isIntersecting){
@@ -652,6 +891,23 @@ a{color:inherit;text-decoration:none}
     });
   },{threshold:0.07,rootMargin:'0px 0px -28px 0px'});
   document.querySelectorAll('.sc, .fpill').forEach(function(el){ io.observe(el); });
+
+  /* stagger changelog entries */
+  document.querySelectorAll('.clog-entry').forEach(function(el, i){
+    el.style.opacity = '0';
+    el.style.transform = 'translateX(-8px)';
+    el.style.transition = 'opacity .4s ease ' + (i * .07 + .1) + 's, transform .4s ease ' + (i * .07 + .1) + 's';
+    var io2 = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'none';
+          io2.unobserve(e.target);
+        }
+      });
+    },{threshold:0.08,rootMargin:'0px 0px -20px 0px'});
+    io2.observe(el);
+  });
 
   /* fade the page in */
   document.body.classList.add('rdy');
