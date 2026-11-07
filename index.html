@@ -141,7 +141,7 @@ ul{list-style:none}
   bottom:-40px;left:5%;
   opacity:.1;
 }
-.hero-inner{position:relative;z-index:1;max-width:var(--w);margin:0 auto}
+.hero-inner{position:relative;z-index:1;max-width:var(--w);margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center}
 .hero-pill{
   display:inline-flex;align-items:center;gap:7px;
   background:rgba(95,179,76,.1);
@@ -172,7 +172,7 @@ ul{list-style:none}
   color:var(--tx2);max-width:580px;line-height:1.7;
   margin-bottom:36px;
 }
-.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:56px}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:56px;justify-content:center}
 .btn{
   display:inline-flex;align-items:center;gap:8px;
   font-weight:700;font-size:.88rem;border-radius:8px;
@@ -196,6 +196,7 @@ ul{list-style:none}
 .svc-chips{
   display:flex;flex-wrap:wrap;gap:8px;
   margin-top:-40px;margin-bottom:52px;
+  justify-content:center;
 }
 .svc-chip{
   display:inline-flex;align-items:center;gap:5px;
@@ -219,7 +220,7 @@ ul{list-style:none}
   border-radius:16px;
   border:1px dashed rgba(95,179,76,.3);
   background:var(--sf);
-  max-width:700px;
+  width:100%;
   transition:box-shadow var(--e),transform var(--e);
 }
 .spon-card:hover{box-shadow:0 4px 24px rgba(0,0,0,.45);transform:translateY(-1px)}
