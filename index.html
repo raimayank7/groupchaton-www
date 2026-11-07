@@ -13,7 +13,7 @@
 <meta property="og:description" content="Six free services built for everyday use: online tools, Korean novels, WhatsApp groups, help guides, office kits, and file transfer.">
 <meta property="og:image" content="https://assets.groupchaton.com/assets/brand/share-card.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/png" sizes="32x32" href="https://assets.groupchaton.com/assets/brand/favicon-32.png">
+<link rel="icon" type="image/png" href="https://assets.groupchaton.com/assets/brand/favicon.png">
 <link rel="apple-touch-icon" href="https://assets.groupchaton.com/assets/brand/app-maskable-512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -91,13 +91,17 @@ ul{list-style:none}
 }
 .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1rem;letter-spacing:-.01em}
 .logo img{height:30px;width:auto}
-.hdr-nav{display:flex;align-items:center;gap:2px}
+.hdr-nav{display:flex;align-items:center;gap:5px}
 .hdr-nav a{
-  font-size:.83rem;font-weight:600;color:var(--tx2);
-  padding:6px 10px;border-radius:6px;
-  transition:color var(--e),background var(--e);
+  font-size:.78rem;font-weight:700;
+  padding:5px 11px;border-radius:20px;
+  background:rgba(var(--c),.1);
+  color:rgb(var(--c));
+  border:1px solid rgba(var(--c),.22);
+  transition:background var(--e),border-color var(--e),transform var(--e);
+  white-space:nowrap;
 }
-.hdr-nav a:hover{color:var(--tx);background:var(--sf2)}
+.hdr-nav a:hover{background:rgba(var(--c),.2);border-color:rgba(var(--c),.4);transform:translateY(-1px)}
 #tbtn{
   width:36px;height:36px;display:flex;align-items:center;justify-content:center;
   border-radius:8px;border:1px solid var(--bd2);
@@ -453,16 +457,16 @@ details.fq[open] .fa{transform:rotate(180deg);stroke:var(--gco)}
 <header class="hdr">
   <div class="hdr-in">
     <a href="/" class="logo" aria-label="GroupChatOn">
-      <img src="https://assets.groupchaton.com/assets/brand/logo-dark.png" alt="GroupChatOn" height="30" class="dk">
-      <img src="https://assets.groupchaton.com/assets/brand/logo-light.png" alt="GroupChatOn" height="30" class="lt" style="display:none">
+      <img src="https://assets.groupchaton.com/assets/brand/gsc-dark.png" alt="GroupChatOn" height="30" class="dk">
+      <img src="https://assets.groupchaton.com/assets/brand/gsc-light.png" alt="GroupChatOn" height="30" class="lt" style="display:none">
     </a>
     <nav class="hdr-nav" aria-label="Services">
-      <a href="https://infinity.groupchaton.com/">Tools</a>
-      <a href="https://app.groupchaton.com/">Novels</a>
-      <a href="https://share.groupchaton.com/">Share</a>
-      <a href="https://help.groupchaton.com/">Help</a>
-      <a href="https://toolkit.groupchaton.com/">Toolkit</a>
-      <a href="https://send.groupchaton.com/">Send</a>
+      <a href="https://infinity.groupchaton.com/" style="--c:160,76,179">∞ Infinity</a>
+      <a href="https://app.groupchaton.com/" style="--c:95,179,76">📖 Novels</a>
+      <a href="https://share.groupchaton.com/" style="--c:37,211,102">🔗 Share</a>
+      <a href="https://help.groupchaton.com/" style="--c:13,148,136">❓ Help</a>
+      <a href="https://toolkit.groupchaton.com/" style="--c:37,99,235">🗂 Toolkit</a>
+      <a href="https://send.groupchaton.com/" style="--c:234,88,12">📤 Send</a>
     </nav>
     <button id="tbtn" aria-label="Toggle light/dark theme">
       <svg id="i-sun" viewBox="0 0 24 24" width="17" height="17" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
