@@ -102,7 +102,7 @@ SCRIPT = """\
   if(location.search.indexOf('sent=1') !== -1){
     var r = document.getElementById('result');
     r.textContent = '✓ Message sent! We’ll reply within 2–3 days.';
-    r.className = 'ok'; r.style.display = '';
+    r.className = 'ok'; r.style.display = 'block';
   }
 
   var form = document.getElementById('cf');
@@ -162,7 +162,7 @@ SCRIPT = """\
   function showResult(msg, ok){
     result.textContent = msg;
     result.className = ok ? 'ok' : 'err';
-    result.style.display = '';
+    result.style.display = 'block';
   }
 })();
 </script>"""
