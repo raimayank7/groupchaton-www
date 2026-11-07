@@ -9,16 +9,25 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
 <style>
-:root{--gco:#5FB34C;--gco-dk:#469036;--bg:#fafafa;--sf:#fff;--tx:#111;--tx2:#555;--bd:rgba(0,0,0,.09);--sans:'Plus Jakarta Sans',system-ui,sans-serif}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111;--sf:#181818;--tx:#f0f0f0;--tx2:#8a8a8a;--bd:rgba(255,255,255,.08)}}
-:root[data-theme="dark"]{--bg:#111;--sf:#181818;--tx:#f0f0f0;--tx2:#8a8a8a;--bd:rgba(255,255,255,.08)}
+:root{--gco:#5FB34C;--gco-dk:#469036;--bg:#fafafa;--sf:#fff;--tx:#111;--tx2:#555;--bd:rgba(0,0,0,.09);--bd2:rgba(0,0,0,.16);--sf2:rgba(0,0,0,.04);--sans:'Plus Jakarta Sans',system-ui,sans-serif}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111;--sf:#181818;--tx:#f0f0f0;--tx2:#8a8a8a;--bd:rgba(255,255,255,.08);--bd2:rgba(255,255,255,.18);--sf2:rgba(255,255,255,.06)}}
+:root[data-theme="dark"]{--bg:#111;--sf:#181818;--tx:#f0f0f0;--tx2:#8a8a8a;--bd:rgba(255,255,255,.08);--bd2:rgba(255,255,255,.18);--sf2:rgba(255,255,255,.06)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{font-family:var(--sans);background:var(--bg);color:var(--tx);min-height:100vh;display:flex;flex-direction:column}
-header{background:var(--sf);border-bottom:1px solid var(--bd);padding:14px 24px;display:flex;align-items:center;gap:12px}
-.logo img{height:44px;width:auto;display:block}
+header{position:sticky;top:0;z-index:200;background:var(--sf);border-bottom:1px solid var(--bd)}
+.hdr-in{max-width:1120px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:62px;gap:12px}
+.logo{display:flex;align-items:center}
+.logo img{height:44px;width:auto}
 @media(max-width:480px){.logo img{height:36px}}
-[data-theme="light"] .logo .dk,[data-theme="dark"] .logo .lt{display:none}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .logo .lt{display:none}:root:not([data-theme="light"]) .logo .dk{display:block}}
+.logo .dk{display:none}
+[data-theme="dark"] .logo .dk{display:block}[data-theme="dark"] .logo .lt{display:none}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .logo .dk{display:block}:root:not([data-theme="light"]) .logo .lt{display:none}}
+.hdr-nav{display:flex;align-items:center;gap:5px}
+.hdr-nav a{font-size:.78rem;font-weight:700;padding:5px 11px;border-radius:20px;background:rgba(var(--c),.1);color:rgb(var(--c));border:1px solid rgba(var(--c),.22);transition:background .18s,border-color .18s,transform .18s;white-space:nowrap;text-decoration:none}
+.hdr-nav a:hover{background:rgba(var(--c),.2);border-color:rgba(var(--c),.4);transform:translateY(-1px)}
+#tbtn{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:8px;border:1px solid var(--bd2);background:transparent;cursor:pointer;color:var(--tx2);transition:color .18s,background .18s,border-color .18s;flex-shrink:0}
+#tbtn:hover{color:var(--tx);background:var(--sf2)}
+@media(max-width:680px){.hdr-nav{display:none}}
 .main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px;text-align:center}
 .code{font-size:5rem;font-weight:700;color:var(--gco);line-height:1}
 h1{font-size:1.6rem;font-weight:700;margin:16px 0 10px}
@@ -30,12 +39,26 @@ footer a{color:var(--tx2);text-decoration:none}footer a:hover{color:var(--gco)}
 </style>
 </head>
 <body>
-<script>(function(){var s=localStorage.getItem('gco-theme');if(s)document.documentElement.setAttribute('data-theme',s)})();</script>
+<script>(function(){var h=document.documentElement;function applyT(t){if(t)h.setAttribute('data-theme',t);else h.removeAttribute('data-theme');var dk=t==='dark'||(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches);var sun=document.getElementById('i-sun'),moon=document.getElementById('i-moon');if(sun)sun.style.display=dk?'none':'';if(moon)moon.style.display=dk?'':'none';}applyT(localStorage.getItem('gco-theme'));document.addEventListener('DOMContentLoaded',function(){applyT(localStorage.getItem('gco-theme'));var btn=document.getElementById('tbtn');if(btn)btn.addEventListener('click',function(){var cur=h.getAttribute('data-theme');var dk=cur==='dark'||(!cur&&window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches);var n=dk?'light':'dark';applyT(n);localStorage.setItem('gco-theme',n);});});})();</script>
 <header>
-  <a href="/" class="logo" aria-label="GroupChatOn home">
-    <img src="https://assets.groupchaton.com/assets/brand/gsc-dark.png" alt="GroupChatOn" height="44" class="dk">
-    <img src="https://assets.groupchaton.com/assets/brand/gsc-light.png" alt="" height="44" class="lt">
-  </a>
+  <div class="hdr-in">
+    <a href="/" class="logo" aria-label="GroupChatOn home">
+      <img src="https://assets.groupchaton.com/assets/brand/gsc-light.png" alt="GroupChatOn" height="44" class="lt">
+      <img src="https://assets.groupchaton.com/assets/brand/gsc-dark.png" alt="" height="44" class="dk">
+    </a>
+    <nav class="hdr-nav" aria-label="Services">
+      <a href="https://infinity.groupchaton.com/" style="--c:160,76,179">∞ Infinity</a>
+      <a href="https://www.groupchaton.com/" style="--c:95,179,76">📖 Novels</a>
+      <a href="https://share.groupchaton.com/" style="--c:37,211,102">🔗 Share</a>
+      <a href="https://help.groupchaton.com/" style="--c:13,148,136">❓ Help</a>
+      <a href="https://toolkit.groupchaton.com/" style="--c:37,99,235">🗂 Toolkit</a>
+      <a href="https://send.groupchaton.com/" style="--c:234,88,12">📤 Send</a>
+    </nav>
+    <button id="tbtn" aria-label="Toggle light/dark theme">
+      <svg id="i-sun" viewBox="0 0 24 24" width="17" height="17" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg id="i-moon" viewBox="0 0 24 24" width="17" height="17" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
 </header>
 <div class="main">
   <div class="code">404</div>
