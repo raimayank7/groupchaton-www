@@ -14,9 +14,11 @@
 :root[data-theme="dark"]{--bg:#111;--sf:#181818;--tx:#f0f0f0;--tx2:#8a8a8a;--bd:rgba(255,255,255,.08)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{font-family:var(--sans);background:var(--bg);color:var(--tx);min-height:100vh;display:flex;flex-direction:column}
-header{background:var(--sf);border-bottom:1px solid var(--bd);padding:16px 24px;display:flex;align-items:center;gap:12px}
-header a.home{font-weight:700;color:var(--tx);font-size:.9rem;text-decoration:none}
-header a.home:hover{color:var(--gco)}
+header{background:var(--sf);border-bottom:1px solid var(--bd);padding:14px 24px;display:flex;align-items:center;gap:12px}
+.logo img{height:44px;width:auto;display:block}
+@media(max-width:480px){.logo img{height:36px}}
+[data-theme="light"] .logo .dk,[data-theme="dark"] .logo .lt{display:none}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .logo .lt{display:none}:root:not([data-theme="light"]) .logo .dk{display:block}}
 .main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px;text-align:center}
 .code{font-size:5rem;font-weight:700;color:var(--gco);line-height:1}
 h1{font-size:1.6rem;font-weight:700;margin:16px 0 10px}
@@ -30,8 +32,10 @@ footer a{color:var(--tx2);text-decoration:none}footer a:hover{color:var(--gco)}
 <body>
 <script>(function(){var s=localStorage.getItem('gco-theme');if(s)document.documentElement.setAttribute('data-theme',s)})();</script>
 <header>
-  <img src="https://assets.groupchaton.com/assets/brand/favicon.png" alt="" width="32" height="32">
-  <a href="/" class="home">GroupChatOn</a>
+  <a href="/" class="logo" aria-label="GroupChatOn home">
+    <img src="https://assets.groupchaton.com/assets/brand/gsc-dark.png" alt="GroupChatOn" height="44" class="dk">
+    <img src="https://assets.groupchaton.com/assets/brand/gsc-light.png" alt="" height="44" class="lt">
+  </a>
 </header>
 <div class="main">
   <div class="code">404</div>

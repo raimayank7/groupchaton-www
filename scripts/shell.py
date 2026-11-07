@@ -16,10 +16,13 @@ PAGE_CSS = """\
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{font-family:var(--sans);background:var(--bg);color:var(--tx);line-height:1.75;padding:0}
 a{color:var(--gco);text-decoration:none}a:hover{text-decoration:underline}
-header{background:var(--sf);border-bottom:1px solid var(--bd);padding:16px 24px;\
+header{background:var(--sf);border-bottom:1px solid var(--bd);padding:14px 24px;\
 display:flex;align-items:center;gap:12px}
-header a.home{font-weight:700;color:var(--tx);font-size:.9rem}
-header a.home:hover{color:var(--gco);text-decoration:none}
+.logo img{height:44px;width:auto;display:block}
+@media(max-width:480px){.logo img{height:36px}}
+[data-theme="light"] .logo .dk,[data-theme="dark"] .logo .lt{display:none}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .logo .lt{display:none}\
+:root:not([data-theme="light"]) .logo .dk{display:block}}
 .wrap{max-width:760px;margin:0 auto;padding:48px 24px 80px}
 h1{font-size:1.9rem;font-weight:800;margin-bottom:8px}
 .updated{font-size:.85rem;color:var(--tx2);margin-bottom:40px}
@@ -39,8 +42,10 @@ THEME_SCRIPT = (
 
 PAGE_HEADER_HTML = (
     "<header>\n"
-    f'  <img src="{BRAND}/favicon.png" alt="" width="32" height="32">\n'
-    '  <a href="/" class="home">GroupChatOn</a>\n'
+    '  <a href="/" class="logo" aria-label="GroupChatOn home">\n'
+    f'    <img src="{BRAND}/gsc-dark.png" alt="GroupChatOn" height="44" class="dk">\n'
+    f'    <img src="{BRAND}/gsc-light.png" alt="" height="44" class="lt">\n'
+    "  </a>\n"
     "</header>"
 )
 
