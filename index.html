@@ -187,6 +187,38 @@ ul{list-style:none}
 }
 .btn-out:hover{background:var(--sf2)}
 
+/* service chips under hero CTA */
+.svc-chips{
+  display:flex;flex-wrap:wrap;gap:8px;
+  margin-top:-40px;margin-bottom:52px;
+}
+.svc-chip{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:5px 13px;border-radius:20px;
+  font-size:.8rem;font-weight:600;letter-spacing:.01em;
+  background:rgba(var(--c),.13);
+  color:rgb(var(--c));
+  border:1px solid rgba(var(--c),.25);
+  text-decoration:none;
+  transition:background var(--e),transform var(--e),box-shadow var(--e);
+}
+.svc-chip:hover{background:rgba(var(--c),.22);transform:translateY(-1px);box-shadow:0 3px 12px rgba(var(--c),.2)}
+
+/* sponsor strip */
+.sponsor-strip{max-width:var(--w);margin:0 auto;padding:0 24px 48px}
+.sponsor-lbl{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--tx2);margin-bottom:12px}
+.sponsor-card{
+  display:flex;align-items:center;gap:16px;
+  background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);
+  padding:16px 20px;text-decoration:none;color:var(--tx);
+  transition:box-shadow var(--e),transform var(--e);max-width:600px;
+}
+.sponsor-card:hover{box-shadow:var(--sh);transform:translateY(-2px)}
+.sponsor-card img{width:48px;height:48px;object-fit:contain;border-radius:8px;flex-shrink:0}
+.sponsor-card-body{flex:1;min-width:0}
+.sponsor-card-title{font-weight:700;font-size:.9rem;margin-bottom:3px}
+.sponsor-card-desc{font-size:.82rem;color:var(--tx2);line-height:1.4}
+
 /* stat row */
 .stat-row{
   display:flex;flex-wrap:wrap;gap:0;
@@ -421,8 +453,8 @@ details.fq[open] .fa{transform:rotate(180deg);stroke:var(--gco)}
 <header class="hdr">
   <div class="hdr-in">
     <a href="/" class="logo" aria-label="GroupChatOn">
-      <img src="https://assets.groupchaton.com/assets/brand/gco-dark.png" alt="GroupChatOn" height="30" class="dk">
-      <img src="https://assets.groupchaton.com/assets/brand/gco-light.png" alt="GroupChatOn" height="30" class="lt" style="display:none">
+      <img src="https://assets.groupchaton.com/assets/brand/logo-dark.png" alt="GroupChatOn" height="30" class="dk">
+      <img src="https://assets.groupchaton.com/assets/brand/logo-light.png" alt="GroupChatOn" height="30" class="lt" style="display:none">
     </a>
     <nav class="hdr-nav" aria-label="Services">
       <a href="https://infinity.groupchaton.com/">Tools</a>
@@ -450,11 +482,18 @@ details.fq[open] .fa{transform:rotate(180deg);stroke:var(--gco)}
     <h1>Everything you need,<br><em>one place to start</em></h1>
     <p class="hero-sub">GroupChatOn is a family of six free services built for everyday use — from 609 online tools to Korean web novels, WhatsApp groups, office kits, and instant file transfer.</p>
     <div class="cta-row">
-      <a href="https://infinity.groupchaton.com/" class="btn btn-green">
-        <svg viewBox="0 0 24 24" width="16" height="16" stroke="#fff" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12c-2-2.5-4-4-6-4a4 4 0 0 0 0 8c2 0 4-1.5 6-4z"/><path d="M12 12c2 2.5 4 4 6 4a4 4 0 0 0 0-8c-2 0-4 1.5-6 4z"/></svg>
-        Browse 609 Tools
+      <a href="#services" class="btn btn-green">
+        <svg viewBox="0 0 24 24" width="16" height="16" stroke="#fff" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        Our Services
       </a>
-      <a href="https://share.groupchaton.com/" class="btn btn-out">Find WhatsApp Groups</a>
+    </div>
+    <div class="svc-chips">
+      <a href="https://infinity.groupchaton.com/" class="svc-chip" style="--c:160,76,179">∞ Infinity</a>
+      <a href="https://app.groupchaton.com/" class="svc-chip" style="--c:95,179,76">📖 Novels</a>
+      <a href="https://share.groupchaton.com/" class="svc-chip" style="--c:37,211,102">🔗 Share</a>
+      <a href="https://help.groupchaton.com/" class="svc-chip" style="--c:13,148,136">❓ Help</a>
+      <a href="https://toolkit.groupchaton.com/" class="svc-chip" style="--c:37,99,235">🗂 Toolkit</a>
+      <a href="https://send.groupchaton.com/" class="svc-chip" style="--c:234,88,12">📤 Send</a>
     </div>
     <div class="stat-row">
       <div class="stat"><div class="stat-n">609</div><div class="stat-l">Online tools</div></div>
@@ -711,13 +750,16 @@ details.fq[open] .fa{transform:rotate(180deg);stroke:var(--gco)}
   </div>
 </section>
 
+<!-- SPONSOR -->
+<div id="home-pk" class="sponsor-strip" style="display:none" aria-hidden="true"></div>
+
 <!-- FOOTER -->
 <footer class="ft">
   <div class="ft-g">
     <div class="ft-brand">
       <a href="/" class="logo" aria-label="GroupChatOn">
-        <img src="https://assets.groupchaton.com/assets/brand/gco-dark.png" alt="GroupChatOn" height="26" class="dk">
-        <img src="https://assets.groupchaton.com/assets/brand/gco-light.png" alt="GroupChatOn" height="26" class="lt" style="display:none">
+        <img src="https://assets.groupchaton.com/assets/brand/logo-dark.png" alt="GroupChatOn" height="26" class="dk">
+        <img src="https://assets.groupchaton.com/assets/brand/logo-light.png" alt="GroupChatOn" height="26" class="lt" style="display:none">
       </a>
       <p>Free tools, novels, groups, guides, templates, and file transfer — all in one place.</p>
       <p>© <span id="yr"></span> GroupChatOn. All rights reserved.</p>
@@ -804,6 +846,40 @@ details.fq[open] .fa{transform:rotate(180deg);stroke:var(--gco)}
   } else {
     cards.forEach(function(c){c.classList.add('vis')});
   }
+
+  /* sponsor card */
+  (function(){
+    var pk = document.getElementById('home-pk');
+    var inIndia = (function(){
+      try{
+        var s=new Date().toLocaleString('en',{timeZone:'Asia/Kolkata',hour12:false,hour:'2-digit'});
+        return !isNaN(parseInt(s,10));
+      }catch(e){return false;}
+    })();
+    fetch('https://share.groupchaton.com/promos.json?_='+Math.floor(Date.now()/3600000))
+      .then(function(r){return r.json();})
+      .then(function(cards){
+        var pool=cards.filter(function(c){
+          if(c.own) return false;
+          if(c.india && !inIndia) return false;
+          return true;
+        });
+        if(!pool.length) return;
+        var c=pool[Math.floor(Math.random()*pool.length)];
+        var img=Array.isArray(c.imgs)?c.imgs[Math.floor(Math.random()*c.imgs.length)]:c.imgs;
+        pk.innerHTML=
+          '<div class="sponsor-lbl">Sponsored</div>'+
+          '<a href="'+c.url+'" class="sponsor-card" target="_blank" rel="noopener sponsored">'+
+            (img?'<img src="'+img+'" alt="" loading="lazy">':'')+
+            '<div class="sponsor-card-body">'+
+              '<div class="sponsor-card-title">'+(c.title||c.name||'')+'</div>'+
+              '<div class="sponsor-card-desc">'+(c.desc||c.description||'')+'</div>'+
+            '</div>'+
+          '</a>';
+        pk.style.display='';
+        pk.removeAttribute('aria-hidden');
+      }).catch(function(){});
+  })();
 
   /* changelog */
   var list = document.getElementById('clog-list');

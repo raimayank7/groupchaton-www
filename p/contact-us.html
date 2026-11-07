@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contact Us – GroupChatOn</title>
+<meta name="description" content="Get in touch with the GroupChatOn team — report issues, ask questions, or suggest a tool.">
+<link rel="canonical" href="https://www.groupchaton.com/p/contact-us.html">
+<link rel="icon" type="image/png" sizes="32x32" href="https://assets.groupchaton.com/assets/brand/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+<style>
+:root{--gco:#5FB34C;--gco-dk:#469036;--bg:#fafafa;--sf:#fff;--tx:#111;--tx2:#555;--bd:rgba(0,0,0,.09);--r:10px;--sans:'Plus Jakarta Sans',system-ui,sans-serif}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111;--sf:#181818;--tx:#f0f0f0;--tx2:#8a8a8a;--bd:rgba(255,255,255,.08)}}
+:root[data-theme="dark"]{--bg:#111;--sf:#181818;--tx:#f0f0f0;--tx2:#8a8a8a;--bd:rgba(255,255,255,.08)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--bg);color:var(--tx);line-height:1.75;padding:0}
+a{color:var(--gco);text-decoration:none}a:hover{text-decoration:underline}
+header{background:var(--sf);border-bottom:1px solid var(--bd);padding:16px 24px;display:flex;align-items:center;gap:12px}
+header a.home{font-weight:700;color:var(--tx);font-size:.9rem}
+header a.home:hover{color:var(--gco);text-decoration:none}
+.wrap{max-width:640px;margin:0 auto;padding:48px 24px 80px}
+h1{font-size:1.9rem;font-weight:800;margin-bottom:8px}
+.sub{color:var(--tx2);margin-bottom:40px;font-size:.95rem}
+.card{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:28px 32px;margin-bottom:24px}
+h2{font-size:1rem;font-weight:700;margin-bottom:14px}
+label{display:block;font-size:.85rem;font-weight:600;color:var(--tx2);margin-bottom:5px}
+input,select,textarea{
+  width:100%;padding:10px 13px;border-radius:7px;
+  border:1px solid var(--bd);background:var(--bg);
+  color:var(--tx);font-family:var(--sans);font-size:.9rem;
+  outline:none;transition:border-color .15s;margin-bottom:16px;
+}
+input:focus,select:focus,textarea:focus{border-color:var(--gco)}
+textarea{min-height:120px;resize:vertical}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--gco);color:#fff;border:none;cursor:pointer;
+  padding:12px 24px;border-radius:8px;font-weight:700;
+  font-family:var(--sans);font-size:.9rem;
+  transition:background .15s,transform .15s;
+}
+.btn:hover{background:var(--gco-dk);transform:translateY(-1px)}
+.note{font-size:.82rem;color:var(--tx2);margin-top:8px}
+.topics{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.topic{
+  padding:6px 14px;border-radius:20px;font-size:.82rem;font-weight:600;
+  background:transparent;border:1.5px solid var(--bd);color:var(--tx2);
+  cursor:pointer;transition:border-color .15s,color .15s,background .15s;
+}
+.topic:hover,.topic.on{border-color:var(--gco);color:var(--gco);background:rgba(95,179,76,.08)}
+#result{display:none;padding:14px 16px;border-radius:8px;font-size:.9rem;font-weight:600;margin-top:12px}
+#result.ok{background:rgba(95,179,76,.12);color:var(--gco)}
+#result.err{background:rgba(220,38,38,.1);color:#ef4444}
+.hny{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+footer{text-align:center;padding:24px;font-size:.8rem;color:var(--tx2);border-top:1px solid var(--bd)}
+footer a{color:var(--tx2)}footer a:hover{color:var(--gco)}
+</style>
+</head>
+<body>
+<script>(function(){var s=localStorage.getItem('gco-theme');if(s)document.documentElement.setAttribute('data-theme',s)})();</script>
+<header>
+  <img src="https://assets.groupchaton.com/assets/brand/favicon-32.png" alt="" width="22" height="22">
+  <a href="/" class="home">GroupChatOn</a>
+</header>
+<div class="wrap">
+  <h1>Contact Us</h1>
+  <p class="sub">Found a bug, have a question, or want to suggest a tool? We'd love to hear from you.</p>
+
+  <div class="card">
+    <h2>What is this about?</h2>
+    <div class="topics" id="topics" role="group" aria-label="Topic">
+      <button type="button" class="topic" data-t="Bug or error">Bug or error</button>
+      <button type="button" class="topic" data-t="Suggest a tool">Suggest a tool</button>
+      <button type="button" class="topic" data-t="Infinity Tools">Infinity Tools</button>
+      <button type="button" class="topic" data-t="Share groups">Share groups</button>
+      <button type="button" class="topic" data-t="Help articles">Help articles</button>
+      <button type="button" class="topic" data-t="Toolkit">Toolkit</button>
+      <button type="button" class="topic" data-t="Send">Send</button>
+      <button type="button" class="topic" data-t="Novels App">Novels App</button>
+      <button type="button" class="topic" data-t="Sponsor / advertise">Sponsor / advertise</button>
+      <button type="button" class="topic" data-t="Other">Other</button>
+    </div>
+
+    <form id="cf" novalidate>
+      <span class="hny" aria-hidden="true"><input tabindex="-1" autocomplete="off" name="website" id="hny"></span>
+      <label for="cf-msg">Your message <span style="color:#ef4444">*</span></label>
+      <textarea id="cf-msg" name="msg" placeholder="Describe what you found or what you need…" required></textarea>
+      <label for="cf-name">Your name (optional)</label>
+      <input id="cf-name" name="name" type="text" placeholder="e.g. Priya" autocomplete="name">
+      <label for="cf-reply">Email or phone to reply to (optional)</label>
+      <input id="cf-reply" name="reply" type="text" placeholder="e.g. hello@example.com" autocomplete="email">
+      <button type="submit" class="btn" id="cf-send">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        Send message
+      </button>
+      <div id="result" role="status"></div>
+    </form>
+    <p class="note">We read every message. Expect a reply within 2–3 days if you left a contact.</p>
+  </div>
+</div>
+
+<footer>
+  <a href="/">GroupChatOn</a> &nbsp;·&nbsp;
+  <a href="/p/privacy-policy.html">Privacy Policy</a> &nbsp;·&nbsp;
+  <a href="/p/terms-of-use.html">Terms of Use</a> &nbsp;·&nbsp;
+  <a href="/p/disclaimer.html">Disclaimer</a>
+</footer>
+
+<script>
+(function(){
+  /* topic picker */
+  var chosen = '';
+  var btns = document.querySelectorAll('.topic');
+  btns.forEach(function(b){
+    b.addEventListener('click',function(){
+      btns.forEach(function(x){x.classList.remove('on')});
+      b.classList.add('on');
+      chosen = b.getAttribute('data-t');
+    });
+  });
+
+  /* form submit */
+  var form = document.getElementById('cf');
+  var result = document.getElementById('result');
+  var t0 = Date.now();
+  form.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var msg = document.getElementById('cf-msg').value.trim();
+    var name = document.getElementById('cf-name').value.trim();
+    var reply = document.getElementById('cf-reply').value.trim();
+    var hny = document.getElementById('hny').value;
+    if(hny) return;
+    if(Date.now()-t0 < 3000) return;
+    if(msg.length < 10){
+      showResult('Please write a message of at least 10 characters.', false);
+      return;
+    }
+    var btn = document.getElementById('cf-send');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    /* Copy to clipboard + open WhatsApp as fallback method */
+    var text = (chosen?'['+chosen+'] ':'')+msg+(name?'\n— '+name:'')+(reply?'\nReply: '+reply:'');
+    var copied = false;
+    try{navigator.clipboard.writeText(text);copied=true;}catch(e){}
+
+    /* Open WhatsApp contact — fastest way for mobile users */
+    var wa = 'https://wa.me/918054009300?text='+encodeURIComponent(text);
+    window.open(wa,'_blank','noopener');
+    showResult('Opening WhatsApp… your message'+(copied?' has been copied to clipboard.':' is ready to send.'), true);
+    btn.disabled = false;
+    btn.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send message';
+  });
+
+  function showResult(msg, ok){
+    result.textContent = msg;
+    result.className = ok ? 'ok' : 'err';
+    result.style.display = '';
+  }
+})();
+</script>
+</body>
+</html>
