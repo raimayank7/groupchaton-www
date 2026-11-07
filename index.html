@@ -508,6 +508,9 @@ details.fq[open] .fa{transform:rotate(180deg);stroke:var(--gco)}
   </div>
 </section>
 
+<!-- SPONSOR (after hero) -->
+<div id="sponsor-hero" class="sponsor-strip" style="display:none" aria-hidden="true"></div>
+
 <!-- SERVICES -->
 <section class="sec" id="services" aria-labelledby="svc-h">
   <div class="wrap">
@@ -652,6 +655,9 @@ details.fq[open] .fa{transform:rotate(180deg);stroke:var(--gco)}
     </div>
   </div>
 </section>
+
+<!-- SPONSOR (after services) -->
+<div id="sponsor-mid" class="sponsor-strip" style="display:none" aria-hidden="true"></div>
 
 <hr class="div">
 
@@ -851,15 +857,23 @@ details.fq[open] .fa{transform:rotate(180deg);stroke:var(--gco)}
     cards.forEach(function(c){c.classList.add('vis')});
   }
 
-  /* sponsor card */
+  /* sponsor cards */
   (function(){
-    var pk = document.getElementById('home-pk');
-    var inIndia = (function(){
-      try{
-        var s=new Date().toLocaleString('en',{timeZone:'Asia/Kolkata',hour12:false,hour:'2-digit'});
-        return !isNaN(parseInt(s,10));
-      }catch(e){return false;}
+    var SLOTS=['sponsor-hero','sponsor-mid','home-pk'];
+    var inIndia=(function(){
+      try{var s=new Date().toLocaleString('en',{timeZone:'Asia/Kolkata',hour12:false,hour:'2-digit'});return !isNaN(parseInt(s,10));}catch(e){return false;}
     })();
+    function cardHtml(c){
+      var img=Array.isArray(c.imgs)?c.imgs[Math.floor(Math.random()*c.imgs.length)]:c.imgs;
+      return '<div class="sponsor-lbl">Sponsored</div>'+
+        '<a href="'+c.url+'" class="sponsor-card" target="_blank" rel="noopener sponsored">'+
+        (img?'<img src="'+img+'" alt="" loading="lazy">':'')+
+        '<div class="sponsor-card-body">'+
+        '<div class="sponsor-card-title">'+(c.title||c.name||'')+'</div>'+
+        '<div class="sponsor-card-desc">'+(c.desc||c.description||'')+'</div>'+
+        '</div></a>';
+    }
+    function showSlot(el,c){el.innerHTML=cardHtml(c);el.style.display='';el.removeAttribute('aria-hidden');}
     fetch('https://share.groupchaton.com/promos.json?_='+Math.floor(Date.now()/3600000))
       .then(function(r){return r.json();})
       .then(function(cards){
@@ -869,19 +883,13 @@ details.fq[open] .fa{transform:rotate(180deg);stroke:var(--gco)}
           return true;
         });
         if(!pool.length) return;
-        var c=pool[Math.floor(Math.random()*pool.length)];
-        var img=Array.isArray(c.imgs)?c.imgs[Math.floor(Math.random()*c.imgs.length)]:c.imgs;
-        pk.innerHTML=
-          '<div class="sponsor-lbl">Sponsored</div>'+
-          '<a href="'+c.url+'" class="sponsor-card" target="_blank" rel="noopener sponsored">'+
-            (img?'<img src="'+img+'" alt="" loading="lazy">':'')+
-            '<div class="sponsor-card-body">'+
-              '<div class="sponsor-card-title">'+(c.title||c.name||'')+'</div>'+
-              '<div class="sponsor-card-desc">'+(c.desc||c.description||'')+'</div>'+
-            '</div>'+
-          '</a>';
-        pk.style.display='';
-        pk.removeAttribute('aria-hidden');
+        /* shuffle pool so each slot gets a different card */
+        for(var i=pool.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=pool[i];pool[i]=pool[j];pool[j]=t;}
+        for(var s=0;s<SLOTS.length;s++){
+          if(s>=pool.length) break;
+          var el=document.getElementById(SLOTS[s]);
+          if(el) showSlot(el,pool[s]);
+        }
       }).catch(function(){});
   })();
 

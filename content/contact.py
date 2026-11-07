@@ -101,7 +101,7 @@ SCRIPT = """\
 
   if(location.search.indexOf('sent=1') !== -1){
     var r = document.getElementById('result');
-    r.textContent = ‘✓ Message sent! We’ll reply within 2–3 days.’;
+    r.textContent = "✓ Message sent! We’ll reply within 2–3 days.";
     r.className = 'ok'; r.style.display = 'block';
   }
 
@@ -142,7 +142,7 @@ SCRIPT = """\
     .then(function(r){ return r.json(); })
     .then(function(d){
       if(d.success === 'true'){
-        showResult(‘✓ Message sent! We’ll reply within 2–3 days.’, true);
+        showResult("✓ Message sent! We’ll reply within 2–3 days.", true);
         form.reset(); chosen = '';
         btns.forEach(function(x){ x.classList.remove('on'); });
         document.getElementById('cf-subject').value = 'GroupChatOn Contact';
