@@ -115,23 +115,10 @@ a{color:inherit;text-decoration:none}
   to{transform:scale(1.08) translate(-1.2%,1.2%);opacity:1}
 }
 
-/* ── Theme-aware logo ───────────────────────── */
-/* dark = default (shows gco-dark.png full wordmark, hides text) */
+/* ── Logo — always show gco-dark.png (green bubble wordmark works on both themes) */
 .logo-lt{display:none}
 .logo-dk{display:block}
-.brand-name{display:none}  /* dark wordmark already has text */
-/* light mode: show bubble icon + text, hide full wordmark */
-@media(prefers-color-scheme:light){
-  :root:not([data-theme="dark"]) .logo-dk{display:none}
-  :root:not([data-theme="dark"]) .logo-lt{display:block}
-  :root:not([data-theme="dark"]) .brand-name{display:inline}
-}
-:root[data-theme="light"] .logo-dk{display:none}
-:root[data-theme="light"] .logo-lt{display:block}
-:root[data-theme="light"] .brand-name{display:inline}
-:root[data-theme="dark"] .logo-dk{display:block}
-:root[data-theme="dark"] .logo-lt{display:none}
-:root[data-theme="dark"] .brand-name{display:none}
+.brand-name{display:none}
 
 /* ── Nav ────────────────────────────────────── */
 .nav{
@@ -153,10 +140,7 @@ a{color:inherit;text-decoration:none}
   font-weight:800;font-size:1.07rem;letter-spacing:-.025em;
   flex-shrink:0;
 }
-/* dark full wordmark */
-.logo-dk{height:30px;width:auto;max-width:160px;border-radius:4px;flex-shrink:0}
-/* light bubble icon */
-.logo-lt{width:28px;height:28px;border-radius:7px;flex-shrink:0}
+.logo-dk{height:34px;width:auto;max-width:180px;flex-shrink:0}
 .brand-name .gn{color:var(--gco)}
 
 .nav-r{display:flex;align-items:center;gap:7px}
@@ -537,7 +521,7 @@ a{color:inherit;text-decoration:none}
   margin-bottom:7px;
 }
 /* dark full wordmark in footer */
-.footer-brand .logo-dk{height:24px;width:auto;max-width:130px;border-radius:3px}
+.footer-brand .logo-dk{height:28px;width:auto;max-width:150px}
 /* light bubble in footer */
 .footer-brand .logo-lt{width:22px;height:22px;border-radius:4px}
 .footer-brand .brand-name{font-weight:800;font-size:1rem;letter-spacing:-.02em}
