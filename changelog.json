@@ -1,5 +1,12 @@
 [
   {
+    "date": "2026-11-07",
+    "service": "www.",
+    "color": "95,179,76",
+    "tag": "update",
+    "msg": "<strong>GroupChatOn home redesigned.</strong> Fresh neutral dark theme, expanded About section, FAQ, and fuller descriptions for all six services."
+  },
+  {
     "date": "2026-11-03",
     "service": "send.",
     "color": "234,88,12",
