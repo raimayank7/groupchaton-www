@@ -96,7 +96,7 @@ PAGE_HEADER_HTML = (
     "    </a>\n"
     '    <nav class="hdr-nav" aria-label="Services">\n'
     '      <a href="https://infinity.groupchaton.com/" style="--c:160,76,179">∞ Infinity</a>\n'
-    '      <a href="https://www.groupchaton.com/" style="--c:95,179,76">\U0001f4d6 Novels</a>\n'
+    '      <a href="https://novel.groupchaton.com/" style="--c:95,179,76">\U0001f4d6 Novels</a>\n'
     '      <a href="https://share.groupchaton.com/" style="--c:37,211,102">\U0001f517 Share</a>\n'
     '      <a href="https://help.groupchaton.com/" style="--c:13,148,136">❓ Help</a>\n'
     '      <a href="https://toolkit.groupchaton.com/" style="--c:37,99,235">\U0001f5c2 Toolkit</a>\n'
