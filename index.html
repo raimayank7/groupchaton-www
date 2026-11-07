@@ -946,18 +946,8 @@ details.fq[open] .fa{transform:rotate(180deg);stroke:var(--gco)}
         if(!pool.length) return;
         /* shuffle */
         for(var i=pool.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=pool[i];pool[i]=pool[j];pool[j]=t;}
-        /* render all cards stacked in the first slot */
-        var hero=document.getElementById(SLOTS[0]);
-        if(hero){
-          var html='<div class="spon-grid">';
-          for(var k=0;k<pool.length;k++) html+=cardHtml(pool[k]);
-          html+='</div>';
-          hero.innerHTML=html;
-          hero.style.display='';
-          hero.removeAttribute('aria-hidden');
-        }
-        /* mid + bottom slots each get one card wrapped in a spon-grid */
-        for(var s=1;s<SLOTS.length;s++){
+        /* each slot gets one card */
+        for(var s=0;s<SLOTS.length;s++){
           if(s>=pool.length) break;
           var el=document.getElementById(SLOTS[s]);
           if(el){el.innerHTML='<div class="spon-grid">'+cardHtml(pool[s])+'</div>';el.style.display='';el.removeAttribute('aria-hidden');}
