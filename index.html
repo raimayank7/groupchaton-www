@@ -212,7 +212,7 @@ ul{list-style:none}
 /* sponsor strip */
 .sponsor-strip{max-width:var(--w);margin:0 auto;padding:0 24px 48px}
 /* sponsor cards use .sc service-card styles with amber accent */
-.sc.spon-card{opacity:1;transform:none;max-width:460px}
+.sc.spon-card{opacity:1;transform:none}
 .spon-img{width:24px;height:24px;object-fit:contain;border-radius:4px;display:block}
 
 /* stat row */
@@ -884,7 +884,6 @@ details.fq[open] .fa{transform:rotate(180deg);stroke:var(--gco)}
         '</div>'+
       '</article>';
     }
-    function showSlot(el,c){el.innerHTML=cardHtml(c);el.style.display='';el.removeAttribute('aria-hidden');}
     fetch('https://share.groupchaton.com/promos.json?_='+Math.floor(Date.now()/3600000))
       .then(function(r){return r.json();})
       .then(function(data){
@@ -895,12 +894,23 @@ details.fq[open] .fa{transform:rotate(180deg);stroke:var(--gco)}
           return true;
         });
         if(!pool.length) return;
-        /* shuffle pool so each slot gets a different card */
+        /* shuffle */
         for(var i=pool.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=pool[i];pool[i]=pool[j];pool[j]=t;}
-        for(var s=0;s<SLOTS.length;s++){
+        /* render all cards as a grid in the first slot */
+        var hero=document.getElementById(SLOTS[0]);
+        if(hero){
+          var html='<div class="sc-grid">';
+          for(var k=0;k<pool.length;k++) html+=cardHtml(pool[k]);
+          html+='</div>';
+          hero.innerHTML=html;
+          hero.style.display='';
+          hero.removeAttribute('aria-hidden');
+        }
+        /* mid + bottom slots each get one card (different from each other) */
+        for(var s=1;s<SLOTS.length;s++){
           if(s>=pool.length) break;
           var el=document.getElementById(SLOTS[s]);
-          if(el) showSlot(el,pool[s]);
+          if(el){el.innerHTML=cardHtml(pool[s]);el.style.display='';el.removeAttribute('aria-hidden');}
         }
       }).catch(function(){});
   })();
