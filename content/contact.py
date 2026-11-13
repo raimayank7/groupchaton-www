@@ -85,7 +85,7 @@ BODY = """\
 SCRIPT = """\
 <script>
 (function(){
-  var SUBMIT_URL = 'https://formsubmit.co/ajax/rai.mayank@yandex.com';
+  var SUBMIT_URL = 'https://formsubmit.co/ajax/08205137b14cf6d7ee97865c8e748e9c';
 
   var chosen = '';
   var btns = document.querySelectorAll('.topic');
