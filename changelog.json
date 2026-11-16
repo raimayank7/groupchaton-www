@@ -1,10 +1,80 @@
 [
   {
+    "date": "2026-11-16",
+    "service": "niveshsahayak.",
+    "color": "14,116,106",
+    "tag": "update",
+    "msg": "<strong>Auto save works from the App.</strong> Choose a backup folder once inside the Nivesh Sahayak App and every bill saved on any Nivesh Sahayak tool goes into it. Firefox, Safari and phones get a daily backup download instead."
+  },
+  {
+    "date": "2026-11-15",
+    "service": "niveshsahayak.",
+    "color": "14,116,106",
+    "tag": "launch",
+    "msg": "<strong>19 new business tools.</strong> Billing for clinics, salons, hotels, rentals, jewellers, garment shops, garages, AMC contracts, mandis, petrol pumps and marketplace sellers, plus CA hand-over, student fees, share links, calculators, file tools and lessons, all inside the free Nivesh Sahayak App in 23 languages."
+  },
+  {
+    "date": "2026-11-15",
+    "service": "niveshsahayak.",
+    "color": "14,116,106",
+    "tag": "update",
+    "msg": "<strong>My day, staff and tax tools.</strong> A daily to-do screen, month-end checklist, business health score, staff attendance with PF and ESI files, an advance tax planner and bank statement import."
+  },
+  {
+    "date": "2026-11-15",
+    "service": "novel.",
+    "color": "95,179,76",
+    "tag": "update",
+    "msg": "<strong>Listen to chapters.</strong> A Listen button reads chapters aloud, every chapter has comments and a Report a mistake button, and the cover picture sits beside the text on wide screens."
+  },
+  {
+    "date": "2026-11-12",
+    "service": "novel.",
+    "color": "95,179,76",
+    "tag": "upgrade",
+    "msg": "<strong>Novels now live at novel.groupchaton.com.</strong> The reading app is the home of the novels; new chapters are copied in every hour."
+  },
+  {
+    "date": "2026-11-12",
+    "service": "niveshsahayak.",
+    "color": "14,116,106",
+    "tag": "update",
+    "msg": "<strong>Look-up tools.</strong> IFSC code checker, PIN code finder and a distance calculator, with help in 23 languages."
+  },
+  {
+    "date": "2026-11-11",
+    "service": "niveshsahayak.",
+    "color": "14,116,106",
+    "tag": "update",
+    "msg": "<strong>One-tap business switching and printed vouchers.</strong> Switch between businesses from the title bar or with Alt S, print expense and staff advance vouchers for signing, and shortcuts that respond at once."
+  },
+  {
     "date": "2026-11-07",
     "service": "www.",
     "color": "95,179,76",
     "tag": "update",
     "msg": "<strong>GroupChatOn home redesigned.</strong> Fresh neutral dark theme, expanded About section, FAQ, and fuller descriptions for all six services."
+  },
+  {
+    "date": "2026-11-06",
+    "service": "niveshsahayak.",
+    "color": "14,116,106",
+    "tag": "update",
+    "msg": "<strong>Staff, salary and loans.</strong> Salary slips go into the accounts, staff advances and loan EMI schedules are tracked, GST on advances is handled, and every screen has help on F1."
+  },
+  {
+    "date": "2026-11-05",
+    "service": "niveshsahayak.",
+    "color": "14,116,106",
+    "tag": "update",
+    "msg": "<strong>Full final accounts.</strong> Trial balance, profit and loss and balance sheet in T format or Schedule III, manufacturing, partnership and trust accounts, party and stock ledgers, and the GSTR-1 file for the portal."
+  },
+  {
+    "date": "2026-11-04",
+    "service": "niveshsahayak.",
+    "color": "14,116,106",
+    "tag": "launch",
+    "msg": "<strong>Nivesh Sahayak App launched.</strong> Free GST billing and accounts for Indian small businesses: money in and out, dues with WhatsApp reminders, party statements and 15 document makers. No login, works offline."
   },
   {
     "date": "2026-11-03",
