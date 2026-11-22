@@ -48,7 +48,7 @@ p,li{font-size:.95rem;color:var(--tx2);margin-bottom:12px}
 ul{padding-left:20px}li{margin-bottom:6px}
 footer{text-align:center;padding:24px;font-size:.8rem;color:var(--tx2);\
 border-top:1px solid var(--bd)}
-footer a{color:var(--tx2)}footer a:hover{color:var(--gco)}"""
+footer a{color:var(--tx2)}footer a:hover{color:var(--gco)}.soc{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px;margin-top:12px}.soc b{margin-right:4px;color:var(--tx2)}.soc a.si{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;border:1px solid rgba(128,128,128,.45);color:var(--tx2);text-decoration:none;transition:background .15s,color .15s,transform .15s}.soc a.si svg{width:20px;height:20px;fill:currentColor}.soc a.si:hover,.soc a.si:focus-visible{color:#fff;border-color:transparent;transform:translateY(-2px)}.soc a.si.fb:hover,.soc a.si.fb:focus-visible{background:#1877f2}.soc a.si.x:hover,.soc a.si.x:focus-visible{background:#111}.soc a.si.yt:hover,.soc a.si.yt:focus-visible{background:#f00}"""
 
 THEME_SCRIPT = (
     "<script>(function(){"
@@ -119,6 +119,16 @@ _FOOTER_ENTRIES = [
 ]
 
 
+_SOCIAL = [
+    ("Facebook", "fb", "Facebook", "https://www.facebook.com/groupchaton",
+     "M14 8h3V4h-3a4 4 0 0 0-4 4v2H7v4h3v8h4v-8h3l1-4h-4V8z"),
+    ("X", "x", "X (Twitter)", "https://www.x.com/groupchaton",
+     "M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"),
+    ("YouTube", "yt", "YouTube channel BingeNovels", "https://www.youtube.com/@BingeNovels",
+     "M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.6 15.6V8.4l6.2 3.6z"),
+]
+
+
 def page_footer(omit=""):
     """Return <footer> HTML, omitting the link whose key == omit."""
     links = [
@@ -127,7 +137,12 @@ def page_footer(omit=""):
         if key != omit
     ]
     sep = " &nbsp;·&nbsp;\n  "
-    return f"<footer>\n  {sep.join(links)}\n</footer>"
+    soc = " ".join(
+        f'<a class="si {k}" href="{h}" rel="noopener" target="_blank" aria-label="{lab}" title="{lab}">'
+        f'<svg aria-hidden="true" viewBox="0 0 24 24"><path d="{d}"/></svg></a>'
+        for n, k, lab, h, d in _SOCIAL
+    )
+    return f"<footer>\n  {sep.join(links)}\n  <div class=\"soc\"><b>Follow us</b> {soc}</div>\n</footer>"
 
 
 def page_shell(title, desc, canonical, extra_css="", body="",
