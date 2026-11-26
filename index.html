@@ -505,6 +505,10 @@ details.fq[open] .fa{transform:rotate(180deg);stroke:var(--gco)}
   .cta-row{display:none}
   .svc-chips{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;width:100%;margin:0 0 22px}
   .svc-chip{flex-direction:column;justify-content:center;gap:6px;min-height:78px;padding:10px 6px;border-radius:16px;font-size:.86rem;font-weight:700;text-align:center;line-height:1.2;letter-spacing:0}
+  .svc-chips>:not(.svc-chip){grid-column:1/-1;min-width:0;max-width:100%}
+  .svc-chip{min-width:0}
+  .google-auto-placed{max-width:100%}
+  .google-auto-placed>ins.adsbygoogle{width:100%!important;max-width:100%}
   .svc-e{font-size:1.5rem;line-height:1}
   .stat-row{display:grid;grid-template-columns:1fr 1fr;flex-direction:initial;width:100%}
   .stat{min-width:0;padding:14px 14px;border-right:1px solid var(--bd);border-bottom:1px solid var(--bd)}
