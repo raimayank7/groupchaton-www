@@ -103,4 +103,38 @@ with open(sitemap_path, "w", encoding="utf-8", newline="\n") as f:
     f.write("\n".join(lines) + "\n")
 print("  built  docs/sitemap.xml")
 
+# ---------------------------------------------------------------------------
+# Old novel addresses from the Blogger years (/2024/11/v2c1.html, /2024/11/lcf.html):
+# the novels moved to novel.groupchaton.com, and these were 404 in Search Console.
+# One small page each that redirects (meta refresh 0 + canonical) to the same
+# chapter or novel there. The list comes from the reading app's own data.
+# ---------------------------------------------------------------------------
+import json, html as _h, urllib.request
+NOVEL = "https://novel.groupchaton.com"
+
+def _moved(rel, to):
+    f = os.path.join(DOCS, rel)
+    os.makedirs(os.path.dirname(f), exist_ok=True)
+    t = _h.escape(to, quote=True)
+    with open(f, "w", encoding="utf-8", newline="\n") as o:
+        o.write('<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Moved to novel.groupchaton.com</title>'
+                f'<link rel="canonical" href="{t}"><meta name="robots" content="noindex">'
+                f'<meta http-equiv="refresh" content="0; url={t}"><script>location.replace({json.dumps(to)}+location.hash)</script>'
+                f'</head><body><p>This page moved: <a href="{t}">{t}</a></p></body></html>\n')
+
+try:
+    data = json.load(urllib.request.urlopen(NOVEL + "/data/novels.json", timeout=60))
+    made = 0
+    for n in data["novels"]:
+        if n.get("index"):
+            _moved(n["index"].lstrip("/"), f"{NOVEL}/novel/{n['id']}/"); made += 1
+        for c in n["chapters"]:
+            _moved(c[0] + ".html", f"{NOVEL}/read/{c[0]}/"); made += 1
+    # Blogger's own list and feed addresses
+    for rel in ("search/index.html", "search/label/index.html", "feeds/posts/default.html", "default.html"):
+        _moved(rel, "https://www.groupchaton.com/")
+    print(f"  built  {made} old novel address redirects")
+except Exception as e:
+    print(f"  SKIP   old novel redirects ({e})")
+
 print("\nBuild complete.")
